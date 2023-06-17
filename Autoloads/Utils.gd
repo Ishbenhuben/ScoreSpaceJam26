@@ -1,7 +1,5 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+func xor(statement_1 : bool, statement_2 : bool) -> bool:
+	return (statement_1 and not statement_2) or (not statement_1 and statement_2)

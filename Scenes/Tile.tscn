@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvhda5dn541t2"]
+
+[ext_resource type="Texture2D" uid="uid://blpb35ywh466n" path="res://Assets/Tile.png" id="1_cex5m"]
+[ext_resource type="Script" path="res://Scenes/Tile.gd" id="1_y8hhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tvbp"]
+size = Vector2(64, 64)
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_y8hhe")
+
+[node name="TileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_cex5m")
+centered = false
+
+[node name="TileArea" type="Area2D" parent="."]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea"]
+shape = SubResource("RectangleShape2D_5tvbp")
+
+[connection signal="input_event" from="TileArea" to="." method="_on_tile_area_input_event"]

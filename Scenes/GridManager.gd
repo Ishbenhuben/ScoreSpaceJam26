@@ -5,12 +5,17 @@ const GRID_SIZE = 4
 
 var grid : Array
 var ninja_position : Vector2 = Vector2.ZERO
-
+var flower_deck : Array
 
 
 func _ready():
+	randomize()
 	init_grid(GRID_SIZE)
 	Events.ninja_teleported_to.emit(get_grid_tile(ninja_position).global_position)
+
+
+
+
 
 	
 
@@ -41,3 +46,18 @@ func handle_tile_press(tile : Tile) -> void:
 	if Utils.xor(delta.x == 0, delta.y == 0):
 		ninja_position = tile.tile_coord
 		Events.ninja_moved_to.emit(tile.global_position)
+
+
+func reset_flower_deck() -> void:
+	var dupes = 2
+	flower_deck = []
+	for i in range(3):
+		for j in range(dupes):
+			flower_deck.append(i)
+	flower_deck.shuffle()
+
+func draw_flower_deck() -> int:
+	if flower_deck == []:
+		reset_flower_deck()
+	return flower_deck.pop_back()
+

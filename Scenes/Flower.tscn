@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://qbemklyqk3f4"]
+
+[ext_resource type="Texture2D" uid="uid://d4nteg0a5dlu1" path="res://Assets/Flowers/flower_blue.png" id="1_lwnxm"]
+[ext_resource type="Script" path="res://Scenes/Flower.gd" id="1_pc6ye"]
+
+[node name="Flower" type="Node2D"]
+script = ExtResource("1_pc6ye")
+
+[node name="FlowerSprite" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("1_lwnxm")
+
+[node name="GrowthTimer" type="Timer" parent="."]
+one_shot = true

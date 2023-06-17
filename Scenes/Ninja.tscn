@@ -37,4 +37,3 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_be8f7")
 offset = Vector2(32, 32)
 hframes = 8
-frame = 6

@@ -27,7 +27,7 @@ func init_grid(grid_length:int) -> void:
 		for r in range(grid_length):
 			new_tile = TILE.instantiate()
 			add_child(new_tile)
-			new_tile.init(Vector2(c,r), get_viewport_rect())
+			new_tile.init(Vector2(c,r), get_viewport_rect(), draw_flower_deck())
 			new_tile.pressed.connect(handle_tile_press)
 			row.append(new_tile)
 		grid.append(row)

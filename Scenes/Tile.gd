@@ -4,10 +4,9 @@ class_name Tile
 const TILE_SIZE = 64
 var tile_coord : Vector2
 
-signal pressed(xy)
-	
 func _ready():
-	pass # Replace with function body.
+	#Events.connect(new_tile, handle_tile_press)
+	pass
 
 func init(xy:Vector2, _vp:Rect2, flower_id:int) -> void:
 	tile_coord = xy
@@ -17,7 +16,7 @@ func init(xy:Vector2, _vp:Rect2, flower_id:int) -> void:
 func _on_tile_area_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			pressed.emit(self)
+			Events.emit_signal("tile_clicked", self)
 			print(tile_coord)
 
 func cut_flower(next_flower_id:int) -> void:

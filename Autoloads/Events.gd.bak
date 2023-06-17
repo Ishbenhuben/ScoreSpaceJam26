@@ -1,0 +1,13 @@
+extends Node
+
+<<<<<<< HEAD
+signal flower_cut(flower_id)
+
+func _ready():
+	pass # Replace with function body.
+=======
+signal ninja_moved_to(new_pos)
+
+signal ninja_teleported_to(new_pos)
+
+>>>>>>> f6c26041d77308240ed4dd20e78f15562de253d9

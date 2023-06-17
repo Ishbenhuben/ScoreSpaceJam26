@@ -18,8 +18,9 @@ func set_flower_id(f_id:int) -> void:
 	start_growth()
 
 func cut_flower(next_flower_id:int) -> void:
-	Events.emit_signal("flower_cut", flower_id)
-	set_flower_id(next_flower_id)
+	if $GrowthTimer.time_left == 0:
+		Events.emit_signal("flower_cut", flower_id)
+		set_flower_id(next_flower_id)
 
 func start_growth() -> void:
 	$GrowthTimer.start()

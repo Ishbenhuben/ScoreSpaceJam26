@@ -11,8 +11,13 @@ var flower_deck : Array
 func _ready():
 	randomize()
 	init_grid(GRID_SIZE)
-	Events.connect("tile_clicked", handle_tile_press)
 	Events.ninja_teleported_to.emit(get_grid_tile(ninja_position).global_position)
+
+
+
+
+
+	
 
 func init_grid(grid_length:int) -> void:
 	var row
@@ -23,8 +28,10 @@ func init_grid(grid_length:int) -> void:
 			new_tile = TILE.instantiate()
 			add_child(new_tile)
 			new_tile.init(Vector2(c,r), get_viewport_rect(), draw_flower_deck())
+			new_tile.pressed.connect(handle_tile_press)
 			row.append(new_tile)
 		grid.append(row)
+
 
 func get_grid_tile(coord : Vector2):
 	if coord.x >= 0 and coord.x < GRID_SIZE:
@@ -32,13 +39,14 @@ func get_grid_tile(coord : Vector2):
 			return grid[coord.y][coord.x]
 	return null
 
+
 func handle_tile_press(tile : Tile) -> void:
+	
 	var delta = (tile.tile_coord - ninja_position)
 	if Utils.xor(delta.x == 0, delta.y == 0):
-		cut_flowers_from_to(ninja_position, tile.tile_coord)
 		ninja_position = tile.tile_coord
 		Events.ninja_moved_to.emit(tile.global_position)
-		
+
 
 func reset_flower_deck() -> void:
 	var dupes = 2
@@ -53,18 +61,8 @@ func draw_flower_deck() -> int:
 		reset_flower_deck()
 	return flower_deck.pop_back()
 
-func cut_flowers_from_to(from:Vector2, to:Vector2) -> void:
-	var delta
-	if from.x == to.x: #vertical
-		delta = sign(to.y - from.y)
-		while from != to:
-			from.y += delta
-			cut_flower_on_tile(from)
-	else: # horizontal
-		delta = sign(to.x - from.x)
-		while from != to:
-			from.x += delta
-			cut_flower_on_tile(from)
-
+<<<<<<< HEAD
 func cut_flower_on_tile(tile_pos:Vector2) -> void:
 	grid[tile_pos.x][tile_pos.y].cut_flower(draw_flower_deck())
+=======
+>>>>>>> f6c26041d77308240ed4dd20e78f15562de253d9

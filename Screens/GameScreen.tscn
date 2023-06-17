@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chwkyyptra7qx"]
+[gd_scene load_steps=4 format=3 uid="uid://chwkyyptra7qx"]
 
 [ext_resource type="PackedScene" uid="uid://d0w1b528fxjar" path="res://Scenes/GridManager.tscn" id="1_h3v4c"]
 [ext_resource type="PackedScene" uid="uid://b3sxvj2s7q6x4" path="res://Scenes/Ninja.tscn" id="2_v7gs4"]
+[ext_resource type="PackedScene" uid="uid://bupvbwfodtws6" path="res://Scenes/TimeManager.tscn" id="3_fkrag"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -18,3 +19,5 @@ z_index = 100
 [node name="GridManager" parent="." instance=ExtResource("1_h3v4c")]
 position = Vector2(306, 673)
 scale = Vector2(2, 2)
+
+[node name="TimeManager" parent="." instance=ExtResource("3_fkrag")]

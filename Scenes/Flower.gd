@@ -9,7 +9,7 @@ var flower_id : int
 func _ready():
 	$GrowthTimer.wait_time = GROW_TIMER
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	$FlowerSprite.set_scale((GROW_TIMER-$GrowthTimer.time_left)/GROW_TIMER * Vector2(1,1))
 
 func set_flower_id(f_id:int) -> void:

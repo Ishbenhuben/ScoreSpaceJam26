@@ -35,3 +35,6 @@ func draw_flower_deck() -> int:
 	if flower_deck == []:
 		reset_flower_deck()
 	return flower_deck.pop_back()
+
+func cut_flower_on_tile(tile_pos:Vector2) -> void:
+	grid[tile_pos.x][tile_pos.y].cut_flower(draw_flower_deck())

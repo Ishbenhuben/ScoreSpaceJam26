@@ -15,11 +15,11 @@ func _process(delta) -> void:
 func set_flower_id(f_id:int) -> void:
 	flower_id = f_id
 	$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])
-	cut_flower()
 	start_growth()
 
-func cut_flower() -> void:
-	current_growth = 0
+func cut_flower(next_flower_id:int) -> void:
+	Events.emit_signal("flower_cut", flower_id)
+	set_flower_id(next_flower_id)
 
 func start_growth() -> void:
 	$GrowthTimer.start()

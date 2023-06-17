@@ -16,3 +16,6 @@ func _on_tile_area_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			print(tile_coord)
+
+func cut_flower(next_flower_id:int) -> void:
+	$Flower.cut_flower(next_flower_id)

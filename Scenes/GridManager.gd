@@ -10,8 +10,10 @@ var flower_deck : Array
 
 func _ready():
 	randomize()
-	init_grid(GRID_SIZE)
 	Events.connect("tile_clicked", handle_tile_press)
+
+func start_round() -> void:
+	init_grid(GRID_SIZE)
 	Events.ninja_teleported_to.emit(get_grid_tile(ninja_position).global_position)
 
 func init_grid(grid_length:int) -> void:

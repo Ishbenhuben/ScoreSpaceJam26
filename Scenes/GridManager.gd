@@ -55,7 +55,7 @@ func try_moving(san_galing:String) -> void:
 			break
 
 func reset_flower_deck() -> void:
-	var dupes = 2
+	var dupes = 4
 	flower_deck = []
 	for i in range(3):
 		for j in range(dupes):

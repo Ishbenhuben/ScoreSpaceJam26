@@ -1,6 +1,6 @@
 extends Control
 
-var initial_time = 10
+var initial_time = 1000
 var additional_time
 var time_left
 var total_time
@@ -28,3 +28,4 @@ func add_time(addtnl_time:float) -> void:
 
 func end_round() -> void:
 	print("Total Time: ",str(total_time))
+	Events.emit_signal("round_ended")

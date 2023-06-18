@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://chwkyyptra7qx"]
+[gd_scene load_steps=6 format=3 uid="uid://chwkyyptra7qx"]
 
 [ext_resource type="Script" path="res://Screens/GameScreen.gd" id="1_5pv3p"]
 [ext_resource type="PackedScene" uid="uid://d0w1b528fxjar" path="res://Scenes/GridManager.tscn" id="1_h3v4c"]
 [ext_resource type="PackedScene" uid="uid://b3sxvj2s7q6x4" path="res://Scenes/Ninja.tscn" id="2_v7gs4"]
 [ext_resource type="PackedScene" uid="uid://bupvbwfodtws6" path="res://Scenes/TimeManager.tscn" id="3_fkrag"]
+[ext_resource type="PackedScene" uid="uid://r7alkewvf8ho" path="res://Scenes/CollectedFlowerManager.tscn" id="5_85iln"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -24,3 +25,7 @@ position = Vector2(306, 673)
 scale = Vector2(2, 2)
 
 [node name="TimeManager" parent="." instance=ExtResource("3_fkrag")]
+layout_mode = 1
+
+[node name="FlowerCollectedManager" parent="." instance=ExtResource("5_85iln")]
+layout_mode = 1

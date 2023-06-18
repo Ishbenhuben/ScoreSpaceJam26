@@ -6,3 +6,5 @@ signal bouquet_made(combo_count:int)
 
 signal ninja_moved_to(new_pos:Vector2)
 signal ninja_teleported_to(new_pos:Vector2)
+
+signal round_ended()

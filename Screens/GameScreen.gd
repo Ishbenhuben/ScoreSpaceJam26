@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready():
-	$GridManager.start_round()
-	$Ninja.start_round()
-	$TimeManager.start_round()
+	start_round()
+
+func start_round() -> void:
+	for node in get_children():
+		node.start_round()

@@ -11,6 +11,7 @@ var flower_deck : Array
 func _ready():
 	randomize()
 	Events.connect("tile_clicked", handle_tile_press)
+	
 
 func start_round() -> void:
 	init_grid(GRID_SIZE)

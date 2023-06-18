@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blpb35ywh466n" path="res://Assets/Tile.png" id="1_cex5m"]
 [ext_resource type="Script" path="res://Scenes/Tile.gd" id="1_y8hhe"]
-[ext_resource type="PackedScene" uid="uid://qbemklyqk3f4" path="res://Scenes/Flower.tscn" id="3_sbft0"]
+[ext_resource type="PackedScene" path="res://Scenes/Flower.tscn" id="3_sbft0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tvbp"]
 size = Vector2(64, 64)

@@ -1,14 +1,14 @@
 extends Control
 
-var initial_time = 1000
-var additional_time
+var initial_time = 10
+var additional_time = 2
 var time_left
 var total_time
 
 var combo_multiplier = 1.1
 
 func _ready() -> void:
-	pass
+	Events.connect("bouquet_made", bouquet_made)
 
 func _physics_process(delta) -> void:
 	time_left -= delta
@@ -21,6 +21,9 @@ func start_round() -> void:
 	time_left = initial_time
 	total_time = initial_time
 	set_physics_process(true)
+
+func bouquet_made(combo_count:int) -> void:
+	add_time(additional_time)
 
 func add_time(addtnl_time:float) -> void:
 	time_left += addtnl_time

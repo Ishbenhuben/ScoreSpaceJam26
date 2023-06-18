@@ -25,7 +25,9 @@ func flower_cut(flower_id:int) -> void:
 		
 	if check_basket():
 		basket = []
-		print("BASKET")
+		bouquets_made += 1
+		$Score/Score_Label.set_text(str(bouquets_made))
+		Events.emit_signal("bouquet_made", 1)
 	update_basket_visual()
 
 func update_basket_visual() -> void:

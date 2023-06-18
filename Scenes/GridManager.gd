@@ -7,6 +7,7 @@ var grid : Array
 var ninja_position : Vector2 = Vector2.ZERO
 var flower_deck : Array
 
+@onready var ninja = $Ninja
 
 func _ready():
 	randomize()
@@ -15,6 +16,7 @@ func _ready():
 
 func start_round() -> void:
 	init_grid(GRID_SIZE)
+	ninja.start_round()
 	Events.ninja_teleported_to.emit(get_grid_tile(ninja_position).global_position)
 
 func init_grid(grid_length:int) -> void:
@@ -38,10 +40,12 @@ func get_grid_tile(coord : Vector2):
 func handle_tile_press(tile : Tile) -> void:
 	var delta = (tile.tile_coord - ninja_position)
 	if Utils.xor(delta.x == 0, delta.y == 0):
+		if ninja.tween and ninja.tween.is_running():
+			print("ninja still tweening")
+			return
 		cut_flowers_from_to(ninja_position, tile.tile_coord)
 		ninja_position = tile.tile_coord
 		Events.ninja_moved_to.emit(tile.global_position)
-		
 
 func reset_flower_deck() -> void:
 	var dupes = 2

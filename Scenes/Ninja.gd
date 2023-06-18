@@ -2,7 +2,9 @@ extends Node2D
 
 @onready var anim_player = $AnimationPlayer
 
-const MAX_SPEED = 750
+const MAX_SPEED = 1000
+
+var tween
 
 func _ready():
 	anim_player.play("idle")
@@ -14,8 +16,9 @@ func start_round() -> void:
 
 func move_to(new_pos : Vector2) -> void:
 	var curr_pos = global_position
-	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self, "global_position", new_pos, (curr_pos - new_pos).length()/MAX_SPEED)
+	
 
 func teleport_to(new_pos : Vector2) -> void:
 	global_position = new_pos

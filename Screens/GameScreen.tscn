@@ -16,13 +16,15 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_5pv3p")
 
-[node name="Ninja" parent="." instance=ExtResource("2_v7gs4")]
-visible = false
-z_index = 100
-
 [node name="GridManager" parent="." instance=ExtResource("1_h3v4c")]
 position = Vector2(306, 673)
 scale = Vector2(2, 2)
+
+[node name="Ninja" parent="GridManager" instance=ExtResource("2_v7gs4")]
+visible = false
+z_index = 100
+position = Vector2(-153, -336.5)
+scale = Vector2(0.5, 0.5)
 
 [node name="TimeManager" parent="." instance=ExtResource("3_fkrag")]
 layout_mode = 1

@@ -33,7 +33,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("1_be8f7")
 offset = Vector2(32, 32)
 hframes = 8

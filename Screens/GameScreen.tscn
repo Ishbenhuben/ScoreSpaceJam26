@@ -17,7 +17,7 @@ mouse_filter = 1
 script = ExtResource("1_5pv3p")
 
 [node name="GridManager" parent="." instance=ExtResource("1_h3v4c")]
-position = Vector2(306, 673)
+position = Vector2(32, 512)
 scale = Vector2(2, 2)
 
 [node name="Ninja" parent="GridManager" instance=ExtResource("2_v7gs4")]

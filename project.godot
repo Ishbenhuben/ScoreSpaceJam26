@@ -31,8 +31,10 @@ window/size/window_width_override=540
 window/size/window_height_override=960
 window/stretch/mode="viewport"
 window/handheld/orientation=1
+window/defaults/default_clear_color=Color(0.894118, 0.858824, 0.792157, 1)
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.894118, 0.858824, 0.792157, 1)

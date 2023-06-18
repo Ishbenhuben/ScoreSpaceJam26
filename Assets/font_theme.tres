@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ciryy6f7j45yu"]
+
+[ext_resource type="FontFile" uid="uid://bolakracl0ohg" path="res://Assets/OtsutomeFont_Ver3.ttf" id="1_w62f4"]
+
+[resource]
+default_font = ExtResource("1_w62f4")
+Label/colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
+Label/fonts/font = ExtResource("1_w62f4")

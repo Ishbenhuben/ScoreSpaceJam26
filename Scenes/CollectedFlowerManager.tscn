@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://r7alkewvf8ho"]
+[gd_scene load_steps=3 format=3 uid="uid://r7alkewvf8ho"]
 
+[ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_0duir"]
 [ext_resource type="Script" path="res://Scenes/CollectedFlowerManager.gd" id="1_jva4m"]
 
 [node name="CollectedFlowerManager" type="Control"]
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("1_0duir")
 script = ExtResource("1_jva4m")
 
 [node name="Basket" type="HBoxContainer" parent="."]
@@ -45,7 +47,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Combo" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,24 +55,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="Combo_Timer" type="Timer" parent="Combo"]
+
 [node name="Combo_Label" type="Label" parent="Combo"]
-layout_mode = 1
-offset_left = 140.0
-offset_top = 78.0
-offset_right = 219.0
-offset_bottom = 177.0
-mouse_filter = 1
-theme_override_font_sizes/font_size = 70
-text = "x1"
+layout_mode = 0
+offset_left = 142.0
+offset_top = 64.0
+offset_right = 182.0
+offset_bottom = 81.0
 
 [node name="Combo_timer_label" type="Label" parent="Combo/Combo_Label"]
-offset_left = -1.0
-offset_top = 112.0
-offset_right = 39.0
-offset_bottom = 138.0
-text = "10"
-
-[node name="Combo_Timer" type="Timer" parent="Combo"]
-one_shot = true
-
-[connection signal="timeout" from="Combo/Combo_Timer" to="." method="_on_combo_timer_timeout"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 61.0
+offset_right = 38.0
+offset_bottom = 78.0

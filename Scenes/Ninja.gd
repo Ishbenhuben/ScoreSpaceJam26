@@ -18,8 +18,12 @@ func move_to(new_pos : Vector2) -> void:
 	var curr_pos = global_position
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self, "global_position", new_pos, (curr_pos - new_pos).length()/MAX_SPEED)
+	tween.tween_callback(finished_move)
 	
-
+func finished_move() -> void:
+	tween = null
+	Events.emit_signal("ninja_finished_moving", "ninja")
+	
 func teleport_to(new_pos : Vector2) -> void:
 	global_position = new_pos
 	

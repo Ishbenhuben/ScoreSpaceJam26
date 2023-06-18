@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdjjge448mvt8"]
+
+[ext_resource type="Texture2D" uid="uid://bpkv37g1t0vj8" path="res://Assets/title.png" id="1_v528r"]
+[ext_resource type="Texture2D" uid="uid://u3w8mhtgu2yf" path="res://Assets/MainMenuButtons/play.png" id="2_oca3a"]
+[ext_resource type="Texture2D" uid="uid://b3sdffs0dwnm2" path="res://Assets/MainMenuButtons/tutorial.png" id="3_ejsog"]
+[ext_resource type="Texture2D" uid="uid://b18pdvjvcdc2t" path="res://Assets/MainMenuButtons/leaderboards.png" id="4_5kiyi"]
+[ext_resource type="Texture2D" uid="uid://y74tqh0840mg" path="res://Assets/MainMenuButtons/settings.png" id="5_fqcxp"]
+
+[node name="MainMenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -405.0
+offset_top = 74.0
+offset_right = 405.0
+offset_bottom = 674.0
+grow_horizontal = 2
+texture = ExtResource("1_v528r")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = 70.0
+offset_right = 405.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_oca3a")
+
+[node name="Tutorial" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = 260.0
+offset_right = 405.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_ejsog")
+
+[node name="Leaderboards" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = 435.0
+offset_right = 405.0
+offset_bottom = 555.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_5kiyi")
+
+[node name="Settings" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = 644.0
+offset_right = 405.0
+offset_bottom = 764.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_fqcxp")

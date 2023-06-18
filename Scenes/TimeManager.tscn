@@ -37,3 +37,33 @@ theme_override_font_sizes/font_size = 100
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Added_Time" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Added_Time_Label" type="Label" parent="Added_Time"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -320.0
+offset_right = 43.0
+offset_bottom = -262.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "+1.2"
+
+[node name="added_time_timer" type="Timer" parent="Added_Time"]
+one_shot = true
+
+[connection signal="timeout" from="Added_Time/added_time_timer" to="." method="_on_added_time_timer_timeout"]

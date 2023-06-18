@@ -5,8 +5,12 @@ var basket_capacity = 3
 
 var bouquets_made = 0
 
+var combo_timer = 3.0
+var current_combo = 0
+
 func _ready():
 	Events.connect("flower_cut", flower_cut)
+	$Combo/Combo_Timer.wait_time = combo_timer
 
 func init_basket() -> void:
 	basket = []
@@ -16,6 +20,7 @@ func init_basket() -> void:
 
 func start_round() -> void:
 	bouquets_made = 0
+	current_combo = 0
 	init_basket()
 
 func flower_cut(flower_id:int) -> void:
@@ -27,15 +32,9 @@ func flower_cut(flower_id:int) -> void:
 		basket = []
 		bouquets_made += 1
 		$Score/Score_Label.set_text(str(bouquets_made))
-		Events.emit_signal("bouquet_made", 1)
+		
+		Events.emit_signal("bouquet_made", get_combo())
 	update_basket_visual()
-
-func update_basket_visual() -> void:
-	for i in range(basket_capacity):
-		var flower_sprite = $Basket.get_child(i)
-		flower_sprite.set_texture(null)
-		if i < len(basket):
-			flower_sprite.set_texture(GameData.FLOWER_TEXTURES[basket[i]])
 
 func check_basket() -> bool:
 	if len(basket) < basket_capacity:
@@ -46,4 +45,33 @@ func check_basket() -> bool:
 			return false
 	return true
 	
+func update_basket_visual() -> void:
+	for i in range(basket_capacity):
+		var flower_sprite = $Basket.get_child(i)
+		flower_sprite.set_texture(null)
+		if i < len(basket):
+			flower_sprite.set_texture(GameData.FLOWER_TEXTURES[basket[i]])
 
+func get_combo() -> int:
+	if $Combo/Combo_Timer.time_left > 0: # combo on going
+		current_combo += 1
+	else: # new combo
+		current_combo = 1
+	update_combo_visual()
+	print(current_combo)
+	$Combo/Combo_Timer.start()
+	return current_combo
+
+func _on_combo_timer_timeout():
+	current_combo = 0
+	update_combo_visual()
+
+func update_combo_visual() -> void:
+	if current_combo > 0:
+		$Combo/Combo_Label.set_text("x%d" % current_combo)
+		$Combo.show()
+	else:
+		$Combo.hide()
+
+func _process(_delta) -> void:
+	$Combo/Combo_Label/Combo_timer_label.set_text("%.2f" % $Combo/Combo_Timer.time_left)

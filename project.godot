@@ -21,6 +21,7 @@ GameData="*res://Autoloads/GameData.gd"
 PlayerData="*res://Autoloads/PlayerData.gd"
 Utils="*res://Autoloads/Utils.gd"
 Events="*res://Autoloads/Events.gd"
+Leaderboard="*res://Lootlocker/leaderboard.gd"
 
 [display]
 

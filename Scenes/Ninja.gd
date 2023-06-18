@@ -22,7 +22,7 @@ func move_to(new_pos : Vector2) -> void:
 	
 func finished_move() -> void:
 	tween = null
-	Events.emit_signal("ninja_finished_moving", "ninja")
+	Events.emit_signal("ninja_finished_moving")
 	
 func teleport_to(new_pos : Vector2) -> void:
 	global_position = new_pos

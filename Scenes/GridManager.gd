@@ -40,9 +40,9 @@ func get_grid_tile(coord : Vector2):
 
 func handle_tile_press(tile : Tile) -> void:
 	move_queue.append(tile)
-	try_moving("grid")
+	try_moving()
 
-func try_moving(san_galing:String) -> void:
+func try_moving() -> void:
 	if ninja.tween: # he still moving
 		return
 	while len(move_queue) > 0:

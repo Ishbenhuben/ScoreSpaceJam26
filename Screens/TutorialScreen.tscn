@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://cwf5tqetaacqe"]
+[gd_scene load_steps=7 format=3 uid="uid://cwf5tqetaacqe"]
+
+[ext_resource type="Script" path="res://Screens/TutorialScreen.gd" id="1_pg2b7"]
+[ext_resource type="Texture2D" uid="uid://dkm511vyq2p45" path="res://Assets/MainMenuButtons/back_to_menu.png" id="2_g5al3"]
+[ext_resource type="Texture2D" uid="uid://u3w8mhtgu2yf" path="res://Assets/MainMenuButtons/play.png" id="3_6451r"]
+[ext_resource type="PackedScene" uid="uid://d0w1b528fxjar" path="res://Scenes/GridManager.tscn" id="4_keifs"]
+[ext_resource type="PackedScene" uid="uid://b3sxvj2s7q6x4" path="res://Scenes/Ninja.tscn" id="5_u1qdk"]
+[ext_resource type="PackedScene" uid="uid://r7alkewvf8ho" path="res://Scenes/CollectedFlowerManager.tscn" id="6_o0wlr"]
 
 [node name="TutorialScreen" type="Control"]
 layout_mode = 3
@@ -7,3 +14,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_pg2b7")
+
+[node name="BackToMenu" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -405.0
+offset_top = -460.0
+offset_right = 405.0
+offset_bottom = -340.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_g5al3")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -405.0
+offset_top = -308.0
+offset_right = 405.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_6451r")
+
+[node name="GridManager" parent="." instance=ExtResource("4_keifs")]
+position = Vector2(261, 722)
+
+[node name="Ninja" parent="GridManager" instance=ExtResource("5_u1qdk")]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="CollectedFlowerManager" parent="." instance=ExtResource("6_o0wlr")]
+layout_mode = 1
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

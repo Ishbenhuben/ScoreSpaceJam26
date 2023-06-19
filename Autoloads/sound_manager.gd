@@ -10,7 +10,7 @@ var sounds: Dictionary = {
 
 func _ready():
 	randomize()
-	#music_player.play(17)
+	music_player.play(17)
 
 func play_fx(sound : String, index : int = -1) -> void:
 	if index == -1:

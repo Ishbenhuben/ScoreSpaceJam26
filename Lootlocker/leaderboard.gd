@@ -65,7 +65,7 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	# Save session_token to memory
 	session_token = res.session_token
 	
-	print("token: " + res.session_token)
+	
 	# Clear node
 	auth_http.queue_free()
 	# Get leaderboards
@@ -75,7 +75,7 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 
 
 func _get_leaderboards():
-	print("Getting leaderboards")
+	
 	var url = "https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/list?count=10"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
@@ -133,7 +133,7 @@ func _on_upload_score_request_completed(result, response_code, headers, body) :
 	submit_score_http.queue_free()
 
 func _change_player_name(new_name : String):
-	print("Changing player name")
+	
 	
 	# use this variable for setting the name of the player
 	var player_name = new_name
@@ -151,12 +151,11 @@ func _change_player_name(new_name : String):
 
 func _on_player_set_name_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	# Print data
-	print(json)
+
 	set_name_http.queue_free()
 
 func _get_player_name():
-	print("Getting player name")
+	
 	var url = "https://api.lootlocker.io/game/player/name"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
@@ -170,6 +169,5 @@ func _get_player_name():
 	
 func _on_player_get_name_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	# Print data
-	print(json)
+
 	player_name = json.name

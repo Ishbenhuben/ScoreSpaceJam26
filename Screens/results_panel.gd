@@ -2,7 +2,7 @@ extends MarginContainer
 
 
 @onready var player_name = $ResultsVbox/PlayerName
-@onready var submit
+@onready var submit_btn = $ResultsVbox/HBoxContainer/Submit
 
 @onready var score_label = $ResultsVbox/ScoreValue
 @onready var bouquets_label = $ResultsVbox/Bouquets/Bouquets_value
@@ -14,7 +14,7 @@ var labels_dict = {}
 
 func _ready():
 	player_name.text = Leaderboard.player_name
-	$ResultsVbox/Submit.disabled = (len(player_name.text) <= 0)
+	submit_btn.disabled = (len(player_name.text) <= 0)
 	labels_dict = {"score" : score_label,
 					"bouquets" : bouquets_label,
 					"max_combo" : max_combo_label,
@@ -27,7 +27,7 @@ func _on_submit_pressed():
 
 
 func _on_player_name_text_changed(new_text):
-	$ResultsVbox/Submit.disabled = (len(new_text) <= 0)
+	submit_btn.disabled = (len(new_text) <= 0)
 
 func add_new_results(property:String, value:String) -> void:
 	results[property] = value

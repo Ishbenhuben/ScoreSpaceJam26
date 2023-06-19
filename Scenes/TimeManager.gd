@@ -5,6 +5,7 @@ var countdown = 3
 var initial_time = 10
 var additional_time = 2.0
 var time_left = 0
+var max_time = 0
 var total_time = 0
 
 var additional_time_displayed_duration = 1.5
@@ -31,6 +32,7 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	time_left -= delta
 	$Timer/Time_Left.set_text("%.1f" % time_left)
+	$Timer/Time_Left_Bar.set_value(time_left)
 	if time_left <= 0:
 		set_physics_process(false)
 		end_round()
@@ -55,6 +57,8 @@ func _on_countdown_timer_timeout():
 func start_round() -> void:
 	time_left = initial_time
 	total_time = initial_time
+	max_time = initial_time
+	$Timer/Time_Left_Bar.max_value = max_time
 	set_physics_process(true)
 
 func bouquet_made(combo_count:int) -> void:
@@ -64,6 +68,9 @@ func add_time(addtnl_time:float) -> void:
 	print("added time: ", addtnl_time)
 	time_left += addtnl_time
 	total_time += addtnl_time
+	if time_left > max_time:
+		max_time = time_left
+		$Timer/Time_Left_Bar.max_value = max_time
 	show_addtnl_time(addtnl_time)
 
 func show_addtnl_time(addtnl_time:float) -> void:

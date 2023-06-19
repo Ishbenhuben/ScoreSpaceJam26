@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://r7alkewvf8ho"]
+[gd_scene load_steps=4 format=3 uid="uid://r7alkewvf8ho"]
 
 [ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_0duir"]
 [ext_resource type="Script" path="res://Scenes/CollectedFlowerManager.gd" id="1_jva4m"]
+[ext_resource type="Texture2D" uid="uid://dtlxbgbjim3to" path="res://Assets/small_brush.png" id="3_s7nwf"]
 
 [node name="CollectedFlowerManager" type="Control"]
 layout_mode = 3
@@ -73,6 +74,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Combo" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -106,12 +108,17 @@ text = "x1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Combo_timer_label" type="Label" parent="Combo/Combo_Label"]
+[node name="Combo_Bar" type="TextureProgressBar" parent="Combo"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = -34.0
-offset_top = 120.0
-offset_right = 6.0
-offset_bottom = 137.0
+offset_left = -95.0
+offset_top = 146.0
+offset_right = 105.0
+offset_bottom = 186.0
+max_value = 2.5
+step = 0.01
+value = 2.5
+texture_progress = ExtResource("3_s7nwf")
 
 [node name="Combo_Timer" type="Timer" parent="Combo"]
 one_shot = true

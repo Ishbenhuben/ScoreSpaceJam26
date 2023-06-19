@@ -26,6 +26,7 @@ func _ready():
 	Events.connect("flower_cut", flower_cut)
 	Events.connect("round_ended", end_round)
 	$Combo/Combo_Timer.wait_time = combo_timer
+	$Combo/Combo_Bar.max_value = combo_timer
 
 func init_basket() -> void:
 	basket = []
@@ -122,7 +123,7 @@ func update_combo_visual() -> void:
 		$Combo.hide()
 
 func _process(_delta) -> void:
-	$Combo/Combo_Label/Combo_timer_label.set_text("%.2f" % $Combo/Combo_Timer.time_left)
+	$Combo/Combo_Bar.set_value($Combo/Combo_Timer.time_left)
 
 func update_score(combo:int) -> void:
 	var added_score = score_per_bouquet + score_per_combo*(combo-1)

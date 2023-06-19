@@ -1,6 +1,6 @@
 extends Node2D
 
-const GROW_TIMER = 1.5
+const GROW_TIMER = 2
 const MAX_SCALE = Vector2.ONE 
 
 var current_growth = 0

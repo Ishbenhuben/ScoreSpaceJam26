@@ -29,6 +29,7 @@ func _physics_process(delta) -> void:
 		$Timer/Time_Left.set_text("%.1f" % time_left)
 
 func ready_round() -> void:
+	$Timer/Time_Left.set_text(str(initial_time))
 	countdown = 3
 	$Countdown/Countdown_Label.set_text(str(countdown))
 	$Countdown.show()

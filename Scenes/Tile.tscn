@@ -16,7 +16,8 @@ texture = ExtResource("2_sra81")
 centered = false
 
 [node name="TileArea" type="Area2D" parent="."]
-position = Vector2(64, 64)
+position = Vector2(72, 72)
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea"]
 shape = SubResource("RectangleShape2D_5tvbp")

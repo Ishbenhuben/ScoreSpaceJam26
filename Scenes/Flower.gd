@@ -30,17 +30,19 @@ func cut_flower(next_flower_id:int) -> void:
 	
 
 func start_growth() -> void:
+	$GrowthTimer.start()
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	$FlowerSprite.scale = Vector2.ONE * 0.0
 	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
-	
+	tween.tween_callback(color_flower)
+
+func color_flower():
 	var tween2 = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-	tween2.parallel().tween_method(set_shader_circle_size, 0.0, 0.5, GROW_TIMER)
-	$GrowthTimer.start()
+	tween2.tween_method(set_shader_circle_size, 0.0, 0.5, 0.1)
+	
 
 func set_shader_circle_size(value: float):
 	set_bg_shaders_param("circle_size", value)
-	
 
 func set_bg_shaders_param(param : String, value) -> void:
 	for bg in backgrounds:

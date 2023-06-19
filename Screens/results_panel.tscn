@@ -29,6 +29,7 @@ script = ExtResource("1_kywuo")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 layout_mode = 2
+mouse_filter = 1
 color = Color(0.917647, 0.796078, 0.666667, 1)
 
 [node name="ResultsVbox" type="VBoxContainer" parent="."]
@@ -37,10 +38,12 @@ layout_mode = 2
 [node name="Space" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="ResultsLabel" type="Label" parent="ResultsVbox"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 1
 theme_override_font_sizes/font_size = 200
 text = "Results"
 horizontal_alignment = 1
@@ -49,6 +52,7 @@ vertical_alignment = 1
 [node name="ScoreLabel" type="Label" parent="ResultsVbox"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 1
 theme_override_font_sizes/font_size = 100
 text = "Score"
 horizontal_alignment = 1
@@ -57,6 +61,7 @@ vertical_alignment = 1
 [node name="ScoreValue" type="Label" parent="ResultsVbox"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 1
 theme_override_font_sizes/font_size = 200
 text = "5125"
 horizontal_alignment = 1
@@ -68,6 +73,7 @@ layout_mode = 2
 [node name="Bouquets_label" type="Label" parent="ResultsVbox/Bouquets"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 60
 text = "Bouquets Made"
 horizontal_alignment = 1
@@ -75,6 +81,7 @@ horizontal_alignment = 1
 [node name="Bouquets_value" type="Label" parent="ResultsVbox/Bouquets"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 60
 text = "512"
 horizontal_alignment = 1
@@ -85,6 +92,7 @@ layout_mode = 2
 [node name="max_combo_label" type="Label" parent="ResultsVbox/Max_Combo"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 60
 text = "Max Combo"
 horizontal_alignment = 1
@@ -92,6 +100,7 @@ horizontal_alignment = 1
 [node name="max_combo_value" type="Label" parent="ResultsVbox/Max_Combo"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 60
 text = "24"
 horizontal_alignment = 1
@@ -102,6 +111,7 @@ layout_mode = 2
 [node name="Time_Played_label" type="Label" parent="ResultsVbox/Time_Played"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 60
 text = "Time Played"
 horizontal_alignment = 1
@@ -109,6 +119,7 @@ horizontal_alignment = 1
 [node name="Time_Played_value" type="Label" parent="ResultsVbox/Time_Played"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 60
 text = "10:52:345"
 horizontal_alignment = 1
@@ -116,10 +127,12 @@ horizontal_alignment = 1
 [node name="Space2" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="PlayerName" type="LineEdit" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.988235, 0.937255, 1)
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_oadu7")
@@ -132,11 +145,13 @@ layout_mode = 2
 [node name="Control" type="Control" parent="ResultsVbox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 
 [node name="Submit" type="Button" parent="ResultsVbox/HBoxContainer"]
 custom_minimum_size = Vector2(512, 128)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yh50g")
@@ -147,24 +162,32 @@ text = "Submit Score"
 [node name="Control2" type="Control" parent="ResultsVbox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 
 [node name="Space3" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Buttons" type="HBoxContainer" parent="ResultsVbox"]
 layout_mode = 2
 
 [node name="HomeButton" type="TextureButton" parent="ResultsVbox/Buttons"]
 layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
 texture_normal = ExtResource("3_mwchk")
 
 [node name="LeaderBoardsButton" type="TextureButton" parent="ResultsVbox/Buttons"]
 layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
 texture_normal = ExtResource("4_sc6tp")
 
 [node name="PlayAgainButton" type="TextureButton" parent="ResultsVbox/Buttons"]
 layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
 texture_normal = ExtResource("5_gr6hv")
 
 [connection signal="text_changed" from="ResultsVbox/PlayerName" to="." method="_on_player_name_text_changed"]

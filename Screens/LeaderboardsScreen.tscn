@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://2e58gp6n5qwh"]
+[gd_scene load_steps=3 format=3 uid="uid://2e58gp6n5qwh"]
+
+[ext_resource type="Script" path="res://Screens/LeaderboardsScreen.gd" id="1_8ch1q"]
+[ext_resource type="Texture2D" uid="uid://dkm511vyq2p45" path="res://Assets/MainMenuButtons/back_to_menu.png" id="1_n4456"]
 
 [node name="LeaderboardsScreen" type="Control"]
 layout_mode = 3
@@ -7,3 +10,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8ch1q")
+
+[node name="BackToMenu" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -405.0
+offset_top = -170.0
+offset_right = 405.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("1_n4456")
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

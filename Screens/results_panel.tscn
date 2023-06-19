@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxcp77j8vpty5"]
+[gd_scene load_steps=5 format=3 uid="uid://dxcp77j8vpty5"]
 
 [ext_resource type="Script" path="res://Screens/results_panel.gd" id="1_kywuo"]
 
@@ -9,12 +9,9 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw532"]
-bg_color = Color(0.152941, 0.137255, 0.12549, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yh50g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rw3qe"]
 
 [node name="ResultsPanel" type="MarginContainer"]
 z_index = 100
@@ -35,7 +32,6 @@ layout_mode = 2
 [node name="Space" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-mouse_filter = 1
 
 [node name="ResultsLabel" type="Label" parent="ResultsVbox"]
 layout_mode = 2
@@ -115,23 +111,37 @@ horizontal_alignment = 1
 [node name="Space2" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-mouse_filter = 1
 
 [node name="PlayerName" type="LineEdit" parent="ResultsVbox"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.988235, 0.937255, 1)
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_oadu7")
-placeholder_text = "Player Name"
+placeholder_text = "Enter Your Name Here"
 alignment = 1
 
-[node name="Submit" type="Button" parent="ResultsVbox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsVbox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.988235, 0.937255, 1)
+
+[node name="Control" type="Control" parent="ResultsVbox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Submit" type="Button" parent="ResultsVbox/HBoxContainer"]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_gw532")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yh50g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rw3qe")
 disabled = true
 text = "Submit Score"
+
+[node name="Control2" type="Control" parent="ResultsVbox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Space3" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 300)
@@ -162,4 +172,4 @@ text = "Play Again"
 horizontal_alignment = 1
 
 [connection signal="text_changed" from="ResultsVbox/PlayerName" to="." method="_on_player_name_text_changed"]
-[connection signal="pressed" from="ResultsVbox/Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="ResultsVbox/HBoxContainer/Submit" to="." method="_on_submit_pressed"]

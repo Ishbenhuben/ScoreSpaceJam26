@@ -130,14 +130,19 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="PlayerName" type="LineEdit" parent="ResultsVbox"]
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(800, 128)
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.988235, 0.937255, 1)
+theme_override_colors/caret_color = Color(1, 0.988235, 0.937255, 1)
+theme_override_constants/caret_width = 4
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_oadu7")
 placeholder_text = "Enter Your Name Here"
 alignment = 1
+max_length = 10
+caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsVbox"]
 layout_mode = 2

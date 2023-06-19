@@ -1,5 +1,7 @@
 extends Control
 
+const PHANTOM = preload("res://Scenes/PhantomLabel.tscn")
+
 var basket = []
 var flowers_array = []
 var basket_capacity = 3
@@ -27,7 +29,6 @@ func _ready():
 
 func init_basket() -> void:
 	basket = []
-
 
 func ready_round() -> void:
 	current_score = 0
@@ -124,7 +125,10 @@ func _process(_delta) -> void:
 	$Combo/Combo_Label/Combo_timer_label.set_text("%.2f" % $Combo/Combo_Timer.time_left)
 
 func update_score(combo:int) -> void:
-	current_score += score_per_bouquet + score_per_combo*(combo-1)
+	var added_score = score_per_bouquet + score_per_combo*(combo-1)
+	$Added_Score/Added_Score_Label.set_text("+%d" %added_score)
+	Utils.phantomize($Added_Score/Added_Score_Label, Vector2(0,-50), 0.75)
+	current_score += added_score
 	$Score/Score_Label.set_text(str(current_score))
 
 func end_round() -> void:

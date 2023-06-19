@@ -23,7 +23,6 @@ func _ready() -> void:
 	set_physics_process(false)
 	Events.connect("bouquet_made", bouquet_made)
 	Events.connect("add_new_result", add_new_results)
-	$Added_Time/added_time_timer.set_wait_time(additional_time_displayed_duration)
 	labels_dict = {"score" : score_label,
 					"bouquets" : bouquets_label,
 					"max_combo" : max_combo_label,
@@ -69,11 +68,7 @@ func add_time(addtnl_time:float) -> void:
 
 func show_addtnl_time(addtnl_time:float) -> void:
 	$Added_Time/Added_Time_Label.set_text("+%.3f" % addtnl_time)
-	$Added_Time.show()
-	$Added_Time/added_time_timer.start()
-
-func _on_added_time_timer_timeout():
-	$Added_Time.hide()
+	Utils.phantomize($Added_Time/Added_Time_Label, Vector2(0,50), 0.75)
 
 func end_round() -> void:
 	print("Total Time: ", Utils.seconds_to_string(total_time))

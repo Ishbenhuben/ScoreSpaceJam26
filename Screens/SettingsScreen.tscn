@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3rbookwitqga"]
+[gd_scene load_steps=4 format=3 uid="uid://b3rbookwitqga"]
 
+[ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_q5snk"]
 [ext_resource type="Script" path="res://Screens/SettingsScreen.gd" id="1_v4vt4"]
-[ext_resource type="Texture2D" uid="uid://dkm511vyq2p45" path="res://Assets/MainMenuButtons/back_to_menu.png" id="2_l0axf"]
+[ext_resource type="Texture2D" uid="uid://c3lch2iqd4bql" path="res://Assets/MainMenuButtons/home no color.png" id="3_3acon"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_q5snk")
 script = ExtResource("1_v4vt4")
 
 [node name="BackToMenu" type="TextureButton" parent="."]
@@ -19,13 +21,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -405.0
-offset_top = -170.0
-offset_right = 405.0
-offset_bottom = -50.0
+offset_left = -175.0
+offset_top = -229.0
+offset_right = 175.0
+offset_bottom = -165.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("2_l0axf")
+texture_normal = ExtResource("3_3acon")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -40,6 +42,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
 [node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -60,6 +73,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 tick_count = 1
+
+[node name="Space2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 
 [node name="Sound" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

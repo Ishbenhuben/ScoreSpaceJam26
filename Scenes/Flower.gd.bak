@@ -1,6 +1,6 @@
 extends Node2D
 
-const GROW_TIMER = 1.5
+const GROW_TIMER = 2
 const MAX_SCALE = Vector2.ONE 
 
 var current_growth = 0
@@ -13,15 +13,8 @@ var flower_id : int
 func _ready():
 	randomize()
 	$GrowthTimer.wait_time = GROW_TIMER
-<<<<<<< HEAD
-	
-	flower_material.set("shader_parameter/background_color", Color.BLUE)
-	flower_material.set("shader_parameter/rand", Vector3(randf_range(0,1000), randf_range(0,1000), randf_range(0,50000)))
-=======
 	set_bg_shaders_param("background_color", Color('FEFCEF'))
 	set_bg_shaders_param("rand", Vector3(randf_range(0,1000), randf_range(0,1000), randf_range(0,50000)))
-
->>>>>>> 672902bc5c6bc96d438117b1164780e9ae23aa63
 	
 func set_flower_id(f_id:int) -> void:
 	flower_id = f_id
@@ -37,12 +30,15 @@ func cut_flower(next_flower_id:int) -> void:
 	
 
 func start_growth() -> void:
-	var tween = create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+<<<<<<< HEAD
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+=======
+	var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+>>>>>>> 07457cbd3acf296a376c8efb257abbcdc1aa65dc
 	$FlowerSprite.scale = Vector2.ONE * 0.0
 	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
 	
-	
-	var tween2 = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	var tween2 = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	tween2.parallel().tween_method(set_shader_circle_size, 0.0, 0.5, GROW_TIMER)
 	$GrowthTimer.start()
 

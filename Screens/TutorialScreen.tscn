@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwf5tqetaacqe"]
 
 [ext_resource type="Script" path="res://Screens/TutorialScreen.gd" id="1_pg2b7"]
-[ext_resource type="Texture2D" uid="uid://dkm511vyq2p45" path="res://Assets/MainMenuButtons/back_to_menu.png" id="2_g5al3"]
+[ext_resource type="Texture2D" uid="uid://c3lch2iqd4bql" path="res://Assets/MainMenuButtons/home no color.png" id="2_7fasr"]
 [ext_resource type="Texture2D" uid="uid://u3w8mhtgu2yf" path="res://Assets/MainMenuButtons/play.png" id="3_6451r"]
 [ext_resource type="PackedScene" uid="uid://d0w1b528fxjar" path="res://Scenes/GridManager.tscn" id="4_keifs"]
 [ext_resource type="PackedScene" uid="uid://b3sxvj2s7q6x4" path="res://Scenes/Ninja.tscn" id="5_u1qdk"]
@@ -24,13 +24,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -405.0
-offset_top = -460.0
-offset_right = 405.0
-offset_bottom = -340.0
+offset_left = -175.0
+offset_top = -324.0
+offset_right = 175.0
+offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("2_g5al3")
+texture_normal = ExtResource("2_7fasr")
 
 [node name="Play" type="TextureButton" parent="."]
 layout_mode = 1
@@ -39,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -405.0
-offset_top = -308.0
-offset_right = 405.0
-offset_bottom = -188.0
+offset_left = -155.0
+offset_top = -192.0
+offset_right = 195.0
+offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("3_6451r")

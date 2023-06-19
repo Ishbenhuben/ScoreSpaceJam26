@@ -2,15 +2,15 @@ extends Control
 
 var countdown = 3
 
-var initial_time = 10
-var additional_time = 2.0
+var initial_time = 15
+var additional_time = 1.0
 var time_left = 0
 var max_time = 0
 var total_time = 0
 
 var additional_time_displayed_duration = 1.5
 
-var combo_multiplier = 1.08
+var combo_multiplier = 1.2
 
 @onready var score_label = $ResultsPanel/ResultsVbox/ScoreValue
 @onready var bouquets_label = $ResultsPanel/ResultsVbox/Bouquets/Bouquets_value

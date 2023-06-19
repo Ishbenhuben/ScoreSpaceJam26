@@ -1,7 +1,5 @@
 extends Control
 
-const PHANTOM = preload("res://Scenes/PhantomLabel.tscn")
-
 var basket = []
 var flowers_array = []
 var basket_capacity = 3

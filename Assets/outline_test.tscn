@@ -11,6 +11,9 @@ shader_parameter/paint_color = null
 shader_parameter/background_color = Color(0.894118, 0.858824, 0.792157, 1)
 shader_parameter/rand = Vector3(12.9898, 78.233, 43758.5)
 shader_parameter/circle_size = 0.4
+shader_parameter/frequency = 3.0
+shader_parameter/amplitude = 0.5
+shader_parameter/intensity = 0.1
 
 [node name="outline_test" type="Node2D"]
 material = SubResource("ShaderMaterial_nk4u3")

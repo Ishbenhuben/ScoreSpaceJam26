@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3sxvj2s7q6x4"]
+[gd_scene load_steps=8 format=3 uid="uid://b3sxvj2s7q6x4"]
 
 [ext_resource type="Script" path="res://Scenes/Ninja.gd" id="1_6ryca"]
 [ext_resource type="Texture2D" uid="uid://dbrsw3c0myer8" path="res://Assets/prototype/Idle.png" id="1_be8f7"]
+[ext_resource type="Texture2D" uid="uid://c4n7o3v5qk5rj" path="res://Assets/prototype/Attack1.png" id="2_5sgbf"]
 [ext_resource type="PackedScene" uid="uid://iae5krcanwki" path="res://Scenes/Trail.tscn" id="3_u2iap"]
 
 [sub_resource type="Animation" id="Animation_i7d8b"]
@@ -19,10 +20,74 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 0, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_be8f7")]
+}
+
+[sub_resource type="Animation" id="Animation_qe2rd"]
+resource_name = "slash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5sgbf")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ldo1v"]
 _data = {
-"idle": SubResource("Animation_i7d8b")
+"idle": SubResource("Animation_i7d8b"),
+"slash": SubResource("Animation_qe2rd")
 }
 
 [node name="Ninja" type="Node2D"]
@@ -35,6 +100,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.152941, 0.137255, 0.12549, 1)
 scale = Vector2(4, 4)
 texture = ExtResource("1_be8f7")
 offset = Vector2(32, 32)

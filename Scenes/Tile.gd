@@ -1,7 +1,7 @@
 extends Node2D
 class_name Tile
 
-const TILE_SIZE = 128
+const TILE_SIZE = 144
 var tile_coord : Vector2
 
 func _ready():

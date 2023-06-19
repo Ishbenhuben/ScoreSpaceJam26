@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b74nb1kp4sfw2"]
+
+[ext_resource type="Script" path="res://Scenes/small_flower.gd" id="1_ic22m"]
+[ext_resource type="Shader" path="res://Assets/ink.gdshader" id="2_xkhl2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b63kr"]
+resource_local_to_scene = true
+shader = ExtResource("2_xkhl2")
+shader_parameter/paint_color = null
+shader_parameter/background_color = null
+shader_parameter/rand = Vector3(12.9898, 78.233, 43758.5)
+shader_parameter/circle_size = 0.0
+shader_parameter/frequency = 3.0
+shader_parameter/amplitude = 0.5
+shader_parameter/intensity = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttvyw"]
+resource_local_to_scene = true
+shader = ExtResource("2_xkhl2")
+shader_parameter/paint_color = null
+shader_parameter/background_color = null
+shader_parameter/rand = Vector3(12.9898, 78.233, 43758.5)
+shader_parameter/circle_size = 0.0
+shader_parameter/frequency = 3.0
+shader_parameter/amplitude = 0.5
+shader_parameter/intensity = 0.1
+
+[node name="SmallFlower" type="Node2D"]
+script = ExtResource("1_ic22m")
+
+[node name="BG1" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b63kr")
+
+[node name="BG2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ttvyw")
+
+[node name="FlowerSprite" type="Sprite2D" parent="."]
+modulate = Color(0.152941, 0.137255, 0.12549, 1)

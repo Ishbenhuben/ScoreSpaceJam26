@@ -15,6 +15,8 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	time_left -= delta
+	if time_left < 1.0:
+		time_left = abs(time_left)
 	$Timer/Time_Left.set_text("%.1f" % time_left)
 	if time_left <= 0:
 		set_physics_process(false)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xkkarkncpbe1"]
+
+[ext_resource type="Script" path="res://Autoloads/sound_manager.gd" id="1_ljxwk"]
+[ext_resource type="AudioStream" uid="uid://bg6315uwj18vx" path="res://Assets/sounds/Shamisen.mp3" id="2_ce28g"]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_ljxwk")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ce28g")
+volume_db = -10.0
+
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

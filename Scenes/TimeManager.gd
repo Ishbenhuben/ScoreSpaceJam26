@@ -12,22 +12,13 @@ var additional_time_displayed_duration = 1.5
 
 var combo_multiplier = 1.2
 
-@onready var score_label = $ResultsPanel/ResultsVbox/ScoreValue
-@onready var bouquets_label = $ResultsPanel/ResultsVbox/Bouquets/Bouquets_value
-@onready var max_combo_label = $ResultsPanel/ResultsVbox/Max_Combo/max_combo_value
-@onready var time_played_label = $ResultsPanel/ResultsVbox/Time_Played/Time_Played_value
 
-var results = {}
-var labels_dict = {}
 
 func _ready() -> void:
 	set_physics_process(false)
 	Events.connect("bouquet_made", bouquet_made)
-	Events.connect("add_new_result", add_new_results)
-	labels_dict = {"score" : score_label,
-					"bouquets" : bouquets_label,
-					"max_combo" : max_combo_label,
-					"time_played" : time_played_label,}
+	
+	
 
 func _physics_process(delta) -> void:
 	time_left -= delta
@@ -79,19 +70,8 @@ func show_addtnl_time(addtnl_time:float) -> void:
 
 func end_round() -> void:
 	print("Total Time: ", Utils.seconds_to_string(total_time))
-	add_new_results("time_played", Utils.seconds_to_string(total_time))
+	$ResultsPanel.add_new_results("time_played", Utils.seconds_to_string(total_time))
 	Events.emit_signal("round_ended")
-	show_results()
+	$ResultsPanel.show_results()
 
-func add_new_results(property:String, value:String) -> void:
-	results[property] = value
 
-func show_results() -> void:
-	for property in labels_dict:
-		if property in results:
-			labels_dict[property].set_text(results[property])
-		else:
-			print(property)
-			labels_dict[property].set_text("-1")
-	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method($ResultsPanel.set_position, Vector2(0,1920), Vector2(0,0), 1)

@@ -35,6 +35,7 @@ layout_mode = 2
 [node name="Space" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="ResultsLabel" type="Label" parent="ResultsVbox"]
 layout_mode = 2
@@ -114,6 +115,7 @@ horizontal_alignment = 1
 [node name="Space2" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="PlayerName" type="LineEdit" parent="ResultsVbox"]
 layout_mode = 2

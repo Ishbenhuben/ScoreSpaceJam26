@@ -17,6 +17,3 @@ func start_round() -> void:
 	for node in get_children():
 		if not node is Sprite2D:
 			node.start_round()
-
-	
-	

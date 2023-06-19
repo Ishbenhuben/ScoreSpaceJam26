@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3rbookwitqga"]
+[gd_scene load_steps=4 format=3 uid="uid://m5eytua0qt17"]
 
 [ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_q5snk"]
 [ext_resource type="Script" path="res://Screens/SettingsScreen.gd" id="1_v4vt4"]
@@ -72,6 +72,9 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+min_value = -40.0
+max_value = 20.0
+value = -10.0
 tick_count = 1
 
 [node name="Space2" type="Control" parent="MarginContainer/VBoxContainer"]
@@ -95,6 +98,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+min_value = -30.0
+max_value = 30.0
 tick_count = 1
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/Music_Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Sound/Sound_Slider" to="." method="_on_sound_slider_value_changed"]

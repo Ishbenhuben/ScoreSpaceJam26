@@ -38,8 +38,8 @@ func show_results() -> void:
 			labels_dict[property].set_text(results[property])
 		else:
 			labels_dict[property].set_text("-1")
-	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method(set_position, Vector2(0,1920), Vector2(0,0), 1)
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_method(set_position, Vector2(0,1920), Vector2(0,0), 2)
 
 
 func _on_home_button_pressed():

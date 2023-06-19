@@ -26,6 +26,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Time_Left_Bar" type="TextureProgressBar" parent="Timer"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -58,6 +59,8 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "10"
 horizontal_alignment = 1

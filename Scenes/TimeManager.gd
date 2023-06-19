@@ -4,7 +4,7 @@ var countdown = 3
 
 var initial_time = 15
 var additional_time = 1.0
-var time_left = 0
+var time_left = initial_time
 var max_time = 0
 var total_time = 0
 
@@ -22,6 +22,7 @@ func _physics_process(delta) -> void:
 	time_left -= delta
 	$Timer/Time_Left.set_text("%.1f" % time_left)
 	$Timer/Time_Left_Bar.set_value(time_left)
+	Events.emit_signal("shiver", time_left<5)
 	if time_left <= 0:
 		set_physics_process(false)
 		end_round()
@@ -34,6 +35,9 @@ func ready_round() -> void:
 	$Countdown/Countdown_Label.set_text(str(countdown))
 	$Countdown.show()
 	$Countdown/Countdown_Timer.start()
+	time_left = initial_time
+	total_time = initial_time
+	max_time = initial_time
 
 func _on_countdown_timer_timeout():
 	countdown -= 1
@@ -41,13 +45,11 @@ func _on_countdown_timer_timeout():
 		$Countdown/Countdown_Label.set_text(str(countdown))
 		$Countdown/Countdown_Timer.start()
 	else:
-		get_parent().start_round()
+		if get_parent().has_method("start_round"):
+			get_parent().start_round()
 		$Countdown.hide()
 
 func start_round() -> void:
-	time_left = initial_time
-	total_time = initial_time
-	max_time = initial_time
 	$Timer/Time_Left_Bar.max_value = max_time
 	set_physics_process(true)
 

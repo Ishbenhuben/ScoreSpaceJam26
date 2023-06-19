@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0pw1g60fbn8n"]
+
+[ext_resource type="Script" path="res://Screens/testScreen.gd" id="1_grrll"]
+[ext_resource type="PackedScene" uid="uid://dxcp77j8vpty5" path="res://Screens/results_panel.tscn" id="2_cmhug"]
+[ext_resource type="PackedScene" uid="uid://r7alkewvf8ho" path="res://Scenes/CollectedFlowerManager.tscn" id="3_gwl7r"]
+
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grrll")
+
+[node name="ResultsPanel" parent="." instance=ExtResource("2_cmhug")]
+layout_mode = 1
+
+[node name="CollectedFlowerManager" parent="." instance=ExtResource("3_gwl7r")]
+layout_mode = 1

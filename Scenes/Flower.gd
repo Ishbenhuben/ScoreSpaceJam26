@@ -39,7 +39,6 @@ func start_growth() -> void:
 func color_flower():
 	var tween2 = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	tween2.tween_method(set_shader_circle_size, 0.0, 0.5, 0.1)
-	
 
 func set_shader_circle_size(value: float):
 	set_bg_shaders_param("circle_size", value)

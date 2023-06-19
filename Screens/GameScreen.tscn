@@ -36,16 +36,15 @@ scale = Vector2(17.7656, 31.3906)
 texture = ExtResource("7_r8gds")
 
 [node name="GridManager" parent="." instance=ExtResource("1_h3v4c")]
-position = Vector2(0, 512)
+position = Vector2(144, 656)
 scale = Vector2(1.875, 1.875)
 
 [node name="Ninja" parent="GridManager" instance=ExtResource("2_v7gs4")]
 visible = false
-position = Vector2(-153, -336.5)
 scale = Vector2(0.5, 0.5)
 
-[node name="TimeManager" parent="." instance=ExtResource("3_fkrag")]
+[node name="FlowerCollectedManager" parent="." instance=ExtResource("5_85iln")]
 layout_mode = 1
 
-[node name="FlowerCollectedManager" parent="." instance=ExtResource("5_85iln")]
+[node name="TimeManager" parent="." instance=ExtResource("3_fkrag")]
 layout_mode = 1

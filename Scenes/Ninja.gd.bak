@@ -1,0 +1,57 @@
+extends Node2D
+
+@onready var anim_player = $AnimationPlayer
+
+<<<<<<< HEAD
+const MAX_SPEED = 2000
+=======
+const MAX_SPEED = 4000
+>>>>>>> 672902bc5c6bc96d438117b1164780e9ae23aa63
+
+var tween
+
+func _ready():
+	anim_player.play("idle")
+	Events.ninja_moved_to.connect(move_to)
+	Events.ninja_teleported_to.connect(teleport_to)
+	Events.connect("round_ended", end_round)
+
+func ready_round() -> void:
+	show()
+	
+func start_round() -> void:
+	pass
+
+func end_round() -> void:
+	pass
+	#hide()
+
+func move_to(new_pos : Vector2) -> void:
+	var curr_pos = global_position
+<<<<<<< HEAD
+	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "global_position", new_pos, (curr_pos - new_pos).length()/MAX_SPEED)
+=======
+	var displacement = (curr_pos - new_pos)
+	if displacement.x != 0:
+		$Sprite2D.flip_h = displacement.x > 0
+	
+	
+	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	#anim_player.play("slash")
+	SoundManager.play_fx("slash")
+	tween.tween_property(self, "global_position", new_pos, displacement.length()/MAX_SPEED)
+>>>>>>> 672902bc5c6bc96d438117b1164780e9ae23aa63
+	tween.tween_callback(finished_move)
+	
+func finished_move() -> void:
+	tween = null
+
+	Events.emit_signal("ninja_finished_moving")
+
+	anim_player.play("idle")
+
+	
+func teleport_to(new_pos : Vector2) -> void:
+	global_position = new_pos
+	

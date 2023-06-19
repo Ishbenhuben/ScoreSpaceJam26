@@ -2,16 +2,20 @@ extends Control
 
 
 func _ready():
+<<<<<<< HEAD
 	ready_round()
-	randomize()
-	
-	$Background.material.set("shader_parameter/frequency", randf_range(6,8))
-	$Background.material.set("shader_parameter/amplitude", 0.3)
 
 func ready_round() -> void:
 	for node in get_children():
-		if not node is Sprite2D:
-			node.ready_round()
+		node.ready_round()
+=======
+	randomize()
+	start_round()
+	
+	$Background.material.set("shader_parameter/frequency", randf_range(6,8))
+	$Background.material.set("shader_parameter/amplitude", 0.3)
+	
+>>>>>>> 672902bc5c6bc96d438117b1164780e9ae23aa63
 
 func start_round() -> void:
 	for node in get_children():

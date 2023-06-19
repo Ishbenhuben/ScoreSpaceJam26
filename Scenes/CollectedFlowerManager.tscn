@@ -19,8 +19,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 246.0
-offset_bottom = 246.0
+offset_top = 354.0
+offset_bottom = 354.0
 grow_horizontal = 2
 
 [node name="Score" type="Control" parent="."]
@@ -82,6 +82,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Combo_Timer" type="Timer" parent="Combo"]
+one_shot = true
 
 [node name="Combo_Label" type="Label" parent="Combo"]
 layout_mode = 0

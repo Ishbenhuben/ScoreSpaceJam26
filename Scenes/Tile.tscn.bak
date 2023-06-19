@@ -16,10 +16,16 @@ texture = ExtResource("2_sra81")
 centered = false
 
 [node name="TileArea" type="Area2D" parent="."]
-position = Vector2(72, 72)
+position = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea"]
 shape = SubResource("RectangleShape2D_5tvbp")
 
 [node name="Flower" parent="." instance=ExtResource("3_sbft0")]
+<<<<<<< HEAD
+scale = Vector2(2, 2)
+=======
 position = Vector2(72, 72)
+
+[connection signal="input_event" from="TileArea" to="." method="_on_tile_area_input_event"]
+>>>>>>> 672902bc5c6bc96d438117b1164780e9ae23aa63

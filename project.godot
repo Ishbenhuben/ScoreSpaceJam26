@@ -22,6 +22,7 @@ PlayerData="*res://Autoloads/PlayerData.gd"
 Utils="*res://Autoloads/Utils.gd"
 Events="*res://Autoloads/Events.gd"
 Leaderboard="*res://Lootlocker/leaderboard.gd"
+SoundManager="*res://Autoloads/sound_manager.tscn"
 
 [display]
 

@@ -6,6 +6,10 @@ uniform vec3 rand = vec3(12.9898, 78.233, 43758.5453123);
 
 uniform float circle_size : hint_range(0.0, 1.0) = 0.0;
 
+uniform float frequency = 3.0;
+uniform float amplitude = 0.5;
+uniform float intensity = 0.1;
+
 
 float random(vec2 uv) {
     return fract(sin(dot(uv.xy,
@@ -32,14 +36,14 @@ float noise(vec2 uv) {
 
 float fbm(vec2 uv) {
     int octaves = 6;
-    float amplitude = 0.5;
-    float frequency = 3.0;
+    float a = amplitude;
+    float f = frequency;
 	float value = 0.0;
 	
     for(int i = 0; i < octaves; i++) {
-        value += amplitude * noise(frequency * uv);
-        amplitude *= 0.5;
-        frequency *= 2.0;
+        value += a * noise(frequency * uv);
+        a *= 0.5;
+        f *= 2.0;
     }
     return value;
 }
@@ -47,11 +51,11 @@ float fbm(vec2 uv) {
 void fragment(){
 	float noise = fbm(UV);
 	vec4 color = texture(TEXTURE, UV);
-	color.rgb = mix(vec3(noise) * background_color, paint_color, 0.1);
-	color.a *= 0.5;
-
-	//COLOR.a *=  (color.r + color.g + color.b)/3.0 ;
+	color.rgb = mix(vec3(noise) * paint_color, background_color, intensity);
+	//color.a *= 0.5;
 	COLOR = color;
+	COLOR.a *=  (color.r + color.g + color.b)/3.0 ;
+	
 	
 
 	if (distance(UV, vec2(0.5,0.5)) > circle_size) 

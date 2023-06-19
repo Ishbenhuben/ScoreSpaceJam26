@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt8svlxh0e5wp"]
+[gd_scene load_steps=7 format=3 uid="uid://squ85gt4fbs1"]
 
 [ext_resource type="Script" path="res://Scenes/Flower.gd" id="1_pc6ye"]
 [ext_resource type="Shader" path="res://Assets/ink.gdshader" id="2_8jma7"]
-[ext_resource type="Texture2D" uid="uid://b4h6bxj073bwa" path="res://Assets/Flowers/flower_pink_bg1.png" id="4_8d058"]
-[ext_resource type="Texture2D" uid="uid://cli7bcv7v2ep8" path="res://Assets/Flowers/flower_pink1.png" id="4_p8lfc"]
+[ext_resource type="Texture2D" uid="uid://b4h6bxj073bwa" path="res://Assets/Flowers/sakura_bg1.png" id="3_fln7y"]
+[ext_resource type="Texture2D" uid="uid://cli7bcv7v2ep8" path="res://Assets/Flowers/sakura.png" id="4_74ctv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kqm24"]
 resource_local_to_scene = true
@@ -12,20 +12,34 @@ shader_parameter/paint_color = null
 shader_parameter/background_color = null
 shader_parameter/rand = Vector3(12.9898, 78.233, 43758.5)
 shader_parameter/circle_size = 0.0
+shader_parameter/frequency = 3.0
+shader_parameter/amplitude = 0.5
+shader_parameter/intensity = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn3oa"]
+resource_local_to_scene = true
+shader = ExtResource("2_8jma7")
+shader_parameter/paint_color = null
+shader_parameter/background_color = null
+shader_parameter/rand = Vector3(12.9898, 78.233, 43758.5)
+shader_parameter/circle_size = 0.0
+shader_parameter/frequency = 3.0
+shader_parameter/amplitude = 0.5
+shader_parameter/intensity = 0.1
 
 [node name="Flower" type="Node2D"]
 script = ExtResource("1_pc6ye")
 
-[node name="BackgroundColor" type="Sprite2D" parent="."]
+[node name="BG1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_kqm24")
-position = Vector2(32, 32)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_8d058")
+texture = ExtResource("3_fln7y")
+
+[node name="BG2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fn3oa")
 
 [node name="FlowerSprite" type="Sprite2D" parent="."]
 modulate = Color(0.152941, 0.137255, 0.12549, 1)
-position = Vector2(32, 32)
-texture = ExtResource("4_p8lfc")
+texture = ExtResource("4_74ctv")
 
 [node name="GrowthTimer" type="Timer" parent="."]
 one_shot = true

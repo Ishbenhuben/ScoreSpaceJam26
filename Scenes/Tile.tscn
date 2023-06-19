@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Tile.gd" id="1_y8hhe"]
 [ext_resource type="Texture2D" uid="uid://d3wpr52o0o68h" path="res://Assets/Flowers/grid.png" id="2_sra81"]
-[ext_resource type="PackedScene" uid="uid://bt8svlxh0e5wp" path="res://Scenes/Flower.tscn" id="3_sbft0"]
+[ext_resource type="PackedScene" uid="uid://squ85gt4fbs1" path="res://Scenes/Flower.tscn" id="3_sbft0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tvbp"]
 size = Vector2(128, 128)

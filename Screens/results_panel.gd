@@ -40,3 +40,15 @@ func show_results() -> void:
 			labels_dict[property].set_text("-1")
 	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_method(set_position, Vector2(0,1920), Vector2(0,0), 1)
+
+
+func _on_home_button_pressed():
+	get_tree().change_scene_to_file("res://Screens/MainMenuScreen.tscn")
+
+
+func _on_leader_boards_button_pressed():
+	get_tree().change_scene_to_file("res://Screens/LeaderboardsScreen.tscn")
+
+
+func _on_play_again_button_pressed():
+	get_tree().change_scene_to_file("res://Screens/GameScreen.tscn")

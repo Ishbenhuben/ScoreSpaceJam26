@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3rbookwitqga"]
+[gd_scene load_steps=5 format=3 uid="uid://b3rbookwitqga"]
 
 [ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_q5snk"]
 [ext_resource type="Script" path="res://Screens/SettingsScreen.gd" id="1_v4vt4"]
-[ext_resource type="Texture2D" uid="uid://c3lch2iqd4bql" path="res://Assets/MainMenuButtons/home no color.png" id="3_3acon"]
+[ext_resource type="FontFile" uid="uid://bolakracl0ohg" path="res://Assets/OtsutomeFont_Ver3.ttf" id="4_6802u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pf60"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -11,23 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("1_q5snk")
 script = ExtResource("1_v4vt4")
-
-[node name="BackToMenu" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -175.0
-offset_top = -229.0
-offset_right = 175.0
-offset_bottom = -165.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("3_3acon")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -97,4 +85,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 tick_count = 1
 
-[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[node name="BackToMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -405.0
+offset_top = -170.0
+offset_right = 405.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
+theme_override_fonts/font = ExtResource("4_6802u")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1pf60")
+text = "Back To Menu"

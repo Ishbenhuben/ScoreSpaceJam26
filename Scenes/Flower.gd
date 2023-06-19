@@ -30,7 +30,7 @@ func cut_flower(next_flower_id:int) -> void:
 	
 
 func start_growth() -> void:
-	var tween = create_tween().set_trans(Tween.TRANS_QUADRATIC).set_ease(Tween.EASE_OUT)
+	var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	$FlowerSprite.scale = Vector2.ONE * 0.0
 	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
 	

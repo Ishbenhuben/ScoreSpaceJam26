@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbgi76n6wh5c4"]
+
+[ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_o61eq"]
+[ext_resource type="Script" path="res://Screens/score.gd" id="2_12mfu"]
+
+[node name="Score" type="Control"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o61eq")
+script = ExtResource("2_12mfu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rank" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1

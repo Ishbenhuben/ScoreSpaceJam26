@@ -14,7 +14,7 @@ var leaderboard_http = HTTPRequest.new()
 var submit_score_http = HTTPRequest.new()
 
 func _ready():
-	_authentication_request()
+	#_authentication_request()
 	pass
 
 func _process(_delta):

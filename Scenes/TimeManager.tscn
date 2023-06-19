@@ -62,17 +62,19 @@ vertical_alignment = 1
 one_shot = true
 
 [node name="ResultsPanel" type="MarginContainer" parent="."]
-visible = false
+z_index = 100
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 166.0
-offset_top = 255.0
-offset_right = -166.0
-offset_bottom = -295.0
+offset_top = 1920.0
+offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="ColorRect" parent="ResultsPanel"]
+layout_mode = 2
+color = Color(0.917647, 0.796078, 0.666667, 1)
 
 [node name="ResultsVbox" type="VBoxContainer" parent="ResultsPanel"]
 layout_mode = 2
@@ -159,21 +161,21 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "house"
+text = "Menu"
 horizontal_alignment = 1
 
 [node name="Leaderboards_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "podium"
+text = "Leaderboards"
 horizontal_alignment = 1
 
 [node name="Play_Again_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "ouroboros"
+text = "Play Again"
 horizontal_alignment = 1
 
 [node name="Countdown" type="Control" parent="."]

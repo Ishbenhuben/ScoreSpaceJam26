@@ -22,7 +22,6 @@ scale = Vector2(2, 2)
 
 [node name="Ninja" parent="GridManager" instance=ExtResource("2_v7gs4")]
 visible = false
-z_index = 100
 position = Vector2(-153, -336.5)
 scale = Vector2(0.5, 0.5)
 

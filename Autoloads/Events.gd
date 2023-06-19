@@ -9,4 +9,4 @@ signal ninja_finished_moving(san_galing:String)
 signal ninja_teleported_to(new_pos:Vector2)
 
 signal round_ended()
-
+signal add_new_result(property:String, value:String)

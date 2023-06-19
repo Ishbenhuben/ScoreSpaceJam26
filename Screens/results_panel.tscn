@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=8 format=3 uid="uid://dxcp77j8vpty5"]
+[gd_scene load_steps=9 format=3 uid="uid://dxcp77j8vpty5"]
 
 [ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_js6v7"]
 [ext_resource type="Script" path="res://Screens/results_panel.gd" id="1_kywuo"]
@@ -169,8 +168,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_gr6hv")
 
 [connection signal="text_changed" from="ResultsVbox/PlayerName" to="." method="_on_player_name_text_changed"]
-[connection signal="pressed" from="ResultsVbox/Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="ResultsVbox/HBoxContainer/Submit" to="." method="_on_submit_pressed"]
 [connection signal="pressed" from="ResultsVbox/Buttons/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="ResultsVbox/Buttons/LeaderBoardsButton" to="." method="_on_leader_boards_button_pressed"]
 [connection signal="pressed" from="ResultsVbox/Buttons/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="ResultsVbox/HBoxContainer/Submit" to="." method="_on_submit_pressed"]

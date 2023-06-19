@@ -24,31 +24,6 @@ signal personal_score_updated(new_score)
 func _ready():
 	_authentication_request()
 
-	pass
-
-func _process(_delta):
-	if(Input.is_action_just_pressed("ui_up")):
-		score += 1
-		print("CurrentScore:"+str(score))
-	
-	if(Input.is_action_just_pressed("ui_down")):
-		score -= 1
-		print("CurrentScore:"+str(score))
-	
-	# Upload score when pressing enter
-	if(Input.is_action_just_pressed("ui_accept")):
-		_upload_score(score)
-	
-	# Get score when pressing spacebar
-	if(Input.is_action_just_pressed("ui_select")):
-		_get_leaderboards()
-	
-	if(Input.is_action_just_pressed("ui_left")):
-		_change_player_name()
-	
-	if(Input.is_action_just_pressed("ui_right")):
-		_get_player_name()
-
 
 func _authentication_request():
 	# Check if a player session has been saved
@@ -157,11 +132,11 @@ func _on_upload_score_request_completed(result, response_code, headers, body) :
 	# Clear node
 	submit_score_http.queue_free()
 
-func _change_player_name():
+func _change_player_name(new_name : String):
 	print("Changing player name")
 	
 	# use this variable for setting the name of the player
-	var player_name = "newName"
+	var player_name = new_name
 	
 	var data = { "name": str(player_name) }
 	var url =  "https://api.lootlocker.io/game/player/name"

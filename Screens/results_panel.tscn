@@ -1,0 +1,163 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxcp77j8vpty5"]
+
+[ext_resource type="Script" path="res://Screens/results_panel.gd" id="1_kywuo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oadu7"]
+bg_color = Color(0.152941, 0.137255, 0.12549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw532"]
+bg_color = Color(0.152941, 0.137255, 0.12549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="ResultsPanel" type="MarginContainer"]
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kywuo")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.917647, 0.796078, 0.666667, 1)
+
+[node name="ResultsVbox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Space" type="Control" parent="ResultsVbox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ResultsLabel" type="Label" parent="ResultsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "Results"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ResultsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="ResultsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "5125"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bouquets" type="HBoxContainer" parent="ResultsVbox"]
+layout_mode = 2
+
+[node name="Bouquets_label" type="Label" parent="ResultsVbox/Bouquets"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Bouquets Made"
+horizontal_alignment = 1
+
+[node name="Bouquets_value" type="Label" parent="ResultsVbox/Bouquets"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "512"
+horizontal_alignment = 1
+
+[node name="Max_Combo" type="HBoxContainer" parent="ResultsVbox"]
+layout_mode = 2
+
+[node name="max_combo_label" type="Label" parent="ResultsVbox/Max_Combo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Max Combo"
+horizontal_alignment = 1
+
+[node name="max_combo_value" type="Label" parent="ResultsVbox/Max_Combo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "24"
+horizontal_alignment = 1
+
+[node name="Time_Played" type="HBoxContainer" parent="ResultsVbox"]
+layout_mode = 2
+
+[node name="Time_Played_label" type="Label" parent="ResultsVbox/Time_Played"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Time Played"
+horizontal_alignment = 1
+
+[node name="Time_Played_value" type="Label" parent="ResultsVbox/Time_Played"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "10:52:345"
+horizontal_alignment = 1
+
+[node name="Space2" type="Control" parent="ResultsVbox"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="PlayerName" type="LineEdit" parent="ResultsVbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.988235, 0.937255, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_oadu7")
+placeholder_text = "Player Name"
+alignment = 1
+
+[node name="Submit" type="Button" parent="ResultsVbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.988235, 0.937255, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_gw532")
+disabled = true
+text = "Submit Score"
+
+[node name="Space3" type="Control" parent="ResultsVbox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="ResultsVbox"]
+layout_mode = 2
+
+[node name="Back_To_Menu_Button" type="Label" parent="ResultsVbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Menu"
+horizontal_alignment = 1
+
+[node name="Leaderboards_Button" type="Label" parent="ResultsVbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Leaderboards"
+horizontal_alignment = 1
+
+[node name="Play_Again_Button" type="Label" parent="ResultsVbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Play Again"
+horizontal_alignment = 1
+
+[connection signal="text_changed" from="ResultsVbox/PlayerName" to="." method="_on_player_name_text_changed"]
+[connection signal="pressed" from="ResultsVbox/Submit" to="." method="_on_submit_pressed"]

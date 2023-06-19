@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bupvbwfodtws6"]
+[gd_scene load_steps=5 format=3 uid="uid://bupvbwfodtws6"]
 
 [ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_r6mfo"]
 [ext_resource type="Script" path="res://Scenes/TimeManager.gd" id="1_vuom6"]
 [ext_resource type="Texture2D" uid="uid://o50tyhjplpa" path="res://Assets/brushstroke.png" id="3_rls3g"]
+[ext_resource type="PackedScene" uid="uid://dxcp77j8vpty5" path="res://Screens/results_panel.tscn" id="4_uat6k"]
 
 [node name="TimeManager" type="Control"]
 layout_mode = 3
@@ -88,130 +89,13 @@ text = "+2.00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResultsPanel" type="MarginContainer" parent="."]
-z_index = 100
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1920.0
-offset_bottom = 1920.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="ColorRect" parent="ResultsPanel"]
-layout_mode = 2
-color = Color(0.917647, 0.796078, 0.666667, 1)
-
-[node name="ResultsVbox" type="VBoxContainer" parent="ResultsPanel"]
-layout_mode = 2
-
-[node name="Space" type="Control" parent="ResultsPanel/ResultsVbox"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="ResultsLabel" type="Label" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 200
-text = "Results"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 100
-text = "Score"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScoreValue" type="Label" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 200
-text = "5125"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Bouquets" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-
-[node name="Bouquets_label" type="Label" parent="ResultsPanel/ResultsVbox/Bouquets"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Bouquets Made"
-horizontal_alignment = 1
-
-[node name="Bouquets_value" type="Label" parent="ResultsPanel/ResultsVbox/Bouquets"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "512"
-horizontal_alignment = 1
-
-[node name="Max_Combo" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-
-[node name="max_combo_label" type="Label" parent="ResultsPanel/ResultsVbox/Max_Combo"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Max Combo"
-horizontal_alignment = 1
-
-[node name="max_combo_value" type="Label" parent="ResultsPanel/ResultsVbox/Max_Combo"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "24"
-horizontal_alignment = 1
-
-[node name="Time_Played" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-
-[node name="Time_Played_label" type="Label" parent="ResultsPanel/ResultsVbox/Time_Played"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Time Played"
-horizontal_alignment = 1
-
-[node name="Time_Played_value" type="Label" parent="ResultsPanel/ResultsVbox/Time_Played"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "10:52:345"
-horizontal_alignment = 1
-
-[node name="Space2" type="Control" parent="ResultsPanel/ResultsVbox"]
-custom_minimum_size = Vector2(0, 800)
-layout_mode = 2
-
-[node name="Buttons" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
-layout_mode = 2
-
-[node name="Back_To_Menu_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Menu"
-horizontal_alignment = 1
-
-[node name="Leaderboards_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Leaderboards"
-horizontal_alignment = 1
-
-[node name="Play_Again_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Play Again"
-horizontal_alignment = 1
+[node name="ResultsPanel" parent="." instance=ExtResource("4_uat6k")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Countdown" type="Control" parent="."]
 visible = false

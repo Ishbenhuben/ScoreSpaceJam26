@@ -2,11 +2,15 @@ shader_type canvas_item;
 
 uniform vec3 paint_color : source_color;
 uniform vec3 background_color : source_color;
+uniform vec3 rand = vec3(12.9898, 78.233, 43758.5453123);
+
+uniform float circle_size : hint_range(0.0, 1.0) = 0.0;
+
 
 float random(vec2 uv) {
     return fract(sin(dot(uv.xy,
-        vec2(12.9898,78.233))) *
-            43758.5453123);
+        vec2(rand.x,rand.y))) *
+            rand.z);
 }
 
 float noise(vec2 uv) {
@@ -27,15 +31,15 @@ float noise(vec2 uv) {
 }
 
 float fbm(vec2 uv) {
-    int octaves = 3;
-    float amplitude = 0.6;
-    float frequency = 1.5;
+    int octaves = 6;
+    float amplitude = 0.5;
+    float frequency = 3.0;
 	float value = 0.0;
 	
     for(int i = 0; i < octaves; i++) {
         value += amplitude * noise(frequency * uv);
         amplitude *= 0.5;
-        frequency *= 1.5;
+        frequency *= 2.0;
     }
     return value;
 }
@@ -43,7 +47,17 @@ float fbm(vec2 uv) {
 void fragment(){
 	float noise = fbm(UV);
 	vec4 color = texture(TEXTURE, UV);
-	color.rgb = mix(vec3(noise) * background_color, paint_color, 0.3);
+	color.rgb = mix(vec3(noise) * background_color, paint_color, 0.1);
+	color.a *= 0.5;
+
+	//COLOR.a *=  (color.r + color.g + color.b)/3.0 ;
 	COLOR = color;
+	
+
+	if (distance(UV, vec2(0.5,0.5)) > circle_size) 
+	{
+		COLOR.a *= 0.0;
+	}
+
 	
 }

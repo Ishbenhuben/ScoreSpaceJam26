@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3sxvj2s7q6x4"]
+[gd_scene load_steps=6 format=3 uid="uid://b3sxvj2s7q6x4"]
 
 [ext_resource type="Script" path="res://Scenes/Ninja.gd" id="1_6ryca"]
 [ext_resource type="Texture2D" uid="uid://dbrsw3c0myer8" path="res://Assets/prototype/Idle.png" id="1_be8f7"]
+[ext_resource type="PackedScene" uid="uid://iae5krcanwki" path="res://Scenes/Trail.tscn" id="3_u2iap"]
 
 [sub_resource type="Animation" id="Animation_i7d8b"]
 resource_name = "idle"
@@ -38,3 +39,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_be8f7")
 offset = Vector2(32, 32)
 hframes = 8
+
+[node name="Trail" parent="." instance=ExtResource("3_u2iap")]
+width = 64.0
+offset = Vector2(128, 128)

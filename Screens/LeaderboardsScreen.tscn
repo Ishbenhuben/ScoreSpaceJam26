@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://2e58gp6n5qwh"]
+[gd_scene load_steps=7 format=3 uid="uid://dckthjqlj0lut"]
 
 [ext_resource type="Script" path="res://Screens/LeaderboardsScreen.gd" id="1_8ch1q"]
-[ext_resource type="Texture2D" uid="uid://dkm511vyq2p45" path="res://Assets/MainMenuButtons/back_to_menu.png" id="1_n4456"]
+[ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_31dl0"]
+[ext_resource type="Texture2D" uid="uid://yc4u8lqpi0lm" path="res://Assets/Flowers/refresh.png" id="3_1fv2v"]
+[ext_resource type="PackedScene" uid="uid://bbgi76n6wh5c4" path="res://Screens/score.tscn" id="3_gnru2"]
+[ext_resource type="FontFile" uid="uid://bolakracl0ohg" path="res://Assets/OtsutomeFont_Ver3.ttf" id="4_2wqa4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kg6y"]
 
 [node name="LeaderboardsScreen" type="Control"]
 layout_mode = 3
@@ -10,9 +15,151 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_31dl0")
 script = ExtResource("1_8ch1q")
 
-[node name="BackToMenu" type="TextureButton" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Leaderboards"
+horizontal_alignment = 1
+
+[node name="Spacer5" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 96)
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(0.152941, 0.137255, 0.12549, 1)
+layout_mode = 2
+texture_normal = ExtResource("3_1fv2v")
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "Rank"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "Player
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "Score
+"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Scores" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Score" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score2" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score3" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score4" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score5" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score6" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score7" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score8" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score9" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Score10" parent="VBoxContainer/Scores" instance=ExtResource("3_gnru2")]
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerRank" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Rank
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerScore" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "High Score"
+horizontal_alignment = 1
+
+[node name="BackToMenu" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -25,6 +172,11 @@ offset_right = 405.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("1_n4456")
+theme_override_colors/font_color = Color(0.152941, 0.137255, 0.12549, 1)
+theme_override_fonts/font = ExtResource("4_2wqa4")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3kg6y")
+text = "Back To Menu"
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

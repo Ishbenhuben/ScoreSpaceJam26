@@ -12,9 +12,18 @@ var score = 0
 var auth_http = HTTPRequest.new()
 var leaderboard_http = HTTPRequest.new()
 var submit_score_http = HTTPRequest.new()
+var set_name_http = HTTPRequest.new()
+var get_name_http = HTTPRequest.new()
+
+var player_name = ""
+
+signal leaderboard_updated(new_board)
+signal personal_score_updated(new_score)
+
 
 func _ready():
-	#_authentication_request()
+	_authentication_request()
+
 	pass
 
 func _process(_delta):
@@ -33,6 +42,12 @@ func _process(_delta):
 	# Get score when pressing spacebar
 	if(Input.is_action_just_pressed("ui_select")):
 		_get_leaderboards()
+	
+	if(Input.is_action_just_pressed("ui_left")):
+		_change_player_name()
+	
+	if(Input.is_action_just_pressed("ui_right")):
+		_get_player_name()
 
 
 func _authentication_request():
@@ -75,10 +90,13 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	# Save session_token to memory
 	session_token = res.session_token
 	
+	print("token: " + res.session_token)
 	# Clear node
 	auth_http.queue_free()
 	# Get leaderboards
+	_get_player_name()
 	_get_leaderboards()
+	
 
 
 func _get_leaderboards():
@@ -97,19 +115,30 @@ func _get_leaderboards():
 func _on_leaderboard_request_completed(result, response_code, headers, body):
 	var res = JSON.parse_string(body.get_string_from_utf8())
 	
-
-	# Formatting as a leaderboard
-	var leaderboardFormatted = ""
-	for n in res.items.size():
-		leaderboardFormatted += str(res.items[n].rank)+str(". ")
-		leaderboardFormatted += str(res.items[n].player.id)+str(" - ")
-		leaderboardFormatted += str(res.items[n].score)+str("\n")
-	
-	# Print the formatted leaderboard to the console
-	print(leaderboardFormatted)
 	
 	# Clear node
 	leaderboard_http.queue_free()
+	
+	var data = []
+	for item in res.items:
+		var entry = {}
+		entry.rank = item.rank
+		entry.id = item.member_id
+		entry.name = item.player.name
+		entry.score = item.score
+		data.append(entry)
+		if data.size() == 10:
+			continue
+	
+	for item in res.items:
+		if item.player.name == player_name:
+			personal_score_updated.emit({"score":item.score, "rank": item.rank})
+			continue
+
+	leaderboard_updated.emit(data)
+	
+	
+	
 
 
 func _upload_score(score):
@@ -122,9 +151,50 @@ func _upload_score(score):
 	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 
 
-
 func _on_upload_score_request_completed(result, response_code, headers, body) :
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	
 	# Clear node
 	submit_score_http.queue_free()
+
+func _change_player_name():
+	print("Changing player name")
+	
+	# use this variable for setting the name of the player
+	var player_name = "newName"
+	
+	var data = { "name": str(player_name) }
+	var url =  "https://api.lootlocker.io/game/player/name"
+	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
+	
+	# Create a request node for getting the highscore
+	set_name_http = HTTPRequest.new()
+	add_child(set_name_http)
+	set_name_http.request_completed.connect(_on_player_set_name_request_completed)
+	# Send request
+	set_name_http.request(url, headers, HTTPClient.METHOD_PATCH, JSON.stringify(data))
+
+func _on_player_set_name_request_completed(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	# Print data
+	print(json)
+	set_name_http.queue_free()
+
+func _get_player_name():
+	print("Getting player name")
+	var url = "https://api.lootlocker.io/game/player/name"
+	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
+	
+	# Create a request node for getting the highscore
+	get_name_http = HTTPRequest.new()
+	add_child(get_name_http)
+	get_name_http.request_completed.connect(_on_player_get_name_request_completed)
+	# Send request
+	get_name_http.request(url, headers, HTTPClient.METHOD_GET, "")
+	
+	
+func _on_player_get_name_request_completed(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	# Print data
+	print(json)
+	player_name = json.name

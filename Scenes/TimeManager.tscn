@@ -61,4 +61,149 @@ vertical_alignment = 1
 [node name="added_time_timer" type="Timer" parent="Added_Time"]
 one_shot = true
 
+[node name="ResultsPanel" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 255.0
+offset_right = -166.0
+offset_bottom = -295.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultsVbox" type="VBoxContainer" parent="ResultsPanel"]
+layout_mode = 2
+
+[node name="ResultsLabel" type="Label" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "Results"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "5125"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bouquets" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+
+[node name="Bouquets_label" type="Label" parent="ResultsPanel/ResultsVbox/Bouquets"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Bouquets Made"
+horizontal_alignment = 1
+
+[node name="Bouquets_value" type="Label" parent="ResultsPanel/ResultsVbox/Bouquets"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "512"
+horizontal_alignment = 1
+
+[node name="Max_Combo" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+
+[node name="max_combo_label" type="Label" parent="ResultsPanel/ResultsVbox/Max_Combo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Max Combo"
+horizontal_alignment = 1
+
+[node name="max_combo_value" type="Label" parent="ResultsPanel/ResultsVbox/Max_Combo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "24"
+horizontal_alignment = 1
+
+[node name="Time_Played" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+
+[node name="Time_Played_label" type="Label" parent="ResultsPanel/ResultsVbox/Time_Played"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Time Played"
+horizontal_alignment = 1
+
+[node name="Time_Played_value" type="Label" parent="ResultsPanel/ResultsVbox/Time_Played"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "10:52:345"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="ResultsPanel/ResultsVbox"]
+layout_mode = 2
+
+[node name="Back_To_Menu_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "house"
+horizontal_alignment = 1
+
+[node name="Leaderboards_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "podium"
+horizontal_alignment = 1
+
+[node name="Play_Again_Button" type="Label" parent="ResultsPanel/ResultsVbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "ouroboros"
+horizontal_alignment = 1
+
+[node name="Countdown" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Countdown_Label" type="Label" parent="Countdown"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 400
+text = "3"
+
+[node name="Countdown_Timer" type="Timer" parent="Countdown"]
+one_shot = true
+
 [connection signal="timeout" from="Added_Time/added_time_timer" to="." method="_on_added_time_timer_timeout"]
+[connection signal="timeout" from="Countdown/Countdown_Timer" to="." method="_on_countdown_timer_timeout"]

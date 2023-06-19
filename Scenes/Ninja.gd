@@ -11,8 +11,11 @@ func _ready():
 	Events.ninja_moved_to.connect(move_to)
 	Events.ninja_teleported_to.connect(teleport_to)
 
-func start_round() -> void:
+func ready_round() -> void:
 	show()
+	
+func start_round() -> void:
+	pass
 
 func move_to(new_pos : Vector2) -> void:
 	var curr_pos = global_position

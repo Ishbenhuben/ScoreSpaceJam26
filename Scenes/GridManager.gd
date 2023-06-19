@@ -15,10 +15,15 @@ func _ready():
 	Events.connect("tile_clicked", handle_tile_press)
 	Events.connect("ninja_finished_moving", try_moving)
 
-func start_round() -> void:
+func ready_round() -> void:
 	init_grid(GRID_SIZE)
-	ninja.start_round()
+	ninja.ready_round()
 	Events.ninja_teleported_to.emit(get_grid_tile(ninja_position).global_position)
+
+func start_round() -> void:
+	for col in range(len(grid)):
+		for row in range(len(grid[col])):
+			grid[col][row].activate_tile()
 
 func init_grid(grid_length:int) -> void:
 	var row

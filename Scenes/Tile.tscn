@@ -23,5 +23,3 @@ shape = SubResource("RectangleShape2D_5tvbp")
 
 [node name="Flower" parent="." instance=ExtResource("3_sbft0")]
 scale = Vector2(2, 2)
-
-[connection signal="input_event" from="TileArea" to="." method="_on_tile_area_input_event"]

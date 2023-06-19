@@ -5,7 +5,7 @@ var basket_capacity = 3
 
 var bouquets_made = 0
 
-var combo_timer = 3.0
+var combo_timer = 2.0
 var current_combo = 0
 
 func _ready():
@@ -18,10 +18,13 @@ func init_basket() -> void:
 		var new_flower = TextureRect.new()
 		$Basket.add_child(new_flower)
 
-func start_round() -> void:
+func ready_round() -> void:
 	bouquets_made = 0
 	current_combo = 0
 	init_basket()
+
+func start_round() -> void:
+	pass
 
 func flower_cut(flower_id:int) -> void:
 	basket.append(flower_id)

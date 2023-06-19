@@ -18,6 +18,9 @@ func _on_tile_area_input_event(_viewport, event, _shape_idx):
 			Events.emit_signal("tile_clicked", self)
 			#print(tile_coord)
 
+func activate_tile() -> void:
+	$TileArea.connect("input_event",_on_tile_area_input_event)
+	
 func disable_tile() -> void:
 	$TileArea.disconnect("input_event",_on_tile_area_input_event)
 

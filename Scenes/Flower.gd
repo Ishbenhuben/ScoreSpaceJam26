@@ -15,9 +15,7 @@ func _ready():
 	
 	flower_material.set("shader_parameter/background_color", Color.BLUE)
 	flower_material.set("shader_parameter/rand", Vector3(randf_range(0,1000), randf_range(0,1000), randf_range(0,50000)))
-
 	
-
 func set_flower_id(f_id:int) -> void:
 	flower_id = f_id
 	$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])

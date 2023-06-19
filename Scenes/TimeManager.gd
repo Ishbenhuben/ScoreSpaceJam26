@@ -1,5 +1,7 @@
 extends Control
 
+var countdown = 3
+
 var initial_time = 10
 var additional_time = 2.0
 var time_left = 0
@@ -9,7 +11,10 @@ var additional_time_displayed_duration = 1.5
 
 var combo_multiplier = 1.08
 
+var results = {}
+
 func _ready() -> void:
+	set_physics_process(false)
 	Events.connect("bouquet_made", bouquet_made)
 	$Added_Time/added_time_timer.set_wait_time(additional_time_displayed_duration)
 
@@ -19,6 +24,21 @@ func _physics_process(delta) -> void:
 	if time_left <= 0:
 		set_physics_process(false)
 		end_round()
+
+func ready_round() -> void:
+	countdown = 3
+	$Countdown/Countdown_Label.set_text(str(countdown))
+	$Countdown.show()
+	$Countdown/Countdown_Timer.start()
+
+func _on_countdown_timer_timeout():
+	countdown -= 1
+	if countdown > 0:
+		$Countdown/Countdown_Label.set_text(str(countdown))
+		$Countdown/Countdown_Timer.start()
+	else:
+		get_parent().start_round()
+		$Countdown.hide()
 
 func start_round() -> void:
 	time_left = initial_time
@@ -43,8 +63,14 @@ func _on_added_time_timer_timeout():
 	$Added_Time.hide()
 
 func end_round() -> void:
-	print("Total Time: ",str(total_time))
+	print("Total Time: ", Utils.seconds_to_string(total_time))
+	add_new_results("Time Played", Utils.seconds_to_string(total_time))
 	Events.emit_signal("round_ended")
+
+func add_new_results(property:String, value:Variant) -> void:
+	results[property] = value
+
+
 
 
 

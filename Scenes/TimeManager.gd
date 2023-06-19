@@ -17,8 +17,6 @@ var combo_multiplier = 1.2
 func _ready() -> void:
 	set_physics_process(false)
 	Events.connect("bouquet_made", bouquet_made)
-	
-	
 
 func _physics_process(delta) -> void:
 	time_left -= delta
@@ -65,7 +63,7 @@ func add_time(addtnl_time:float) -> void:
 	show_addtnl_time(addtnl_time)
 
 func show_addtnl_time(addtnl_time:float) -> void:
-	$Added_Time/Added_Time_Label.set_text("+%.3f" % addtnl_time)
+	$Added_Time/Added_Time_Label.set_text("+%.2f" % addtnl_time)
 	Utils.phantomize($Added_Time/Added_Time_Label, Vector2(0,50), 0.75)
 
 func end_round() -> void:

@@ -69,7 +69,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "Bouquets Made"
+text = "Matches Made"
 horizontal_alignment = 1
 
 [node name="Bouquets_value" type="Label" parent="ResultsVbox/Bouquets"]

@@ -39,7 +39,7 @@ func _authentication_request():
 	var data = { "game_key": game_API_key, "game_version": "0.0.0.1", "development_mode": true }
 	
 	# If a player session already exists, send with the player identifier
-	if(player_session_exists == true):
+	if(player_session_exists == true and false):
 		data = { "game_key": game_API_key, "player_identifier":player_identifier, "game_version": "0.0.0.1", "development_mode": true }
 	
 	# Add 'Content-Type' header:

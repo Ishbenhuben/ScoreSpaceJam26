@@ -1,11 +1,14 @@
 extends Node2D
 
-const GROW_TIMER = 2
+const GROW_TIMER = 2.0
 const MAX_SCALE = Vector2.ONE 
 
 var current_growth = 0
 
 var flower_id : int
+
+var current_frame = 0
+var max_frame = 10
 
 
 @onready var backgrounds = [$BG1, $BG2]
@@ -19,6 +22,7 @@ func _ready():
 func set_flower_id(f_id:int) -> void:
 	flower_id = f_id
 	$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])
+	$FlowerSheet.set_texture(GameData.FLOWER_SHEETS[flower_id])
 	set_flower_backgrounds(flower_id)
 	start_growth()
 
@@ -27,14 +31,25 @@ func cut_flower(next_flower_id:int) -> void:
 		Events.emit_signal("flower_cut", flower_id)
 		set_shader_circle_size(0.0)
 		set_flower_id(next_flower_id)
-	
 
 func start_growth() -> void:
 	$GrowthTimer.start()
-	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-	$FlowerSprite.scale = Vector2.ONE * 0.0
-	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
-	tween.tween_callback(color_flower)
+#	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+#	$FlowerSprite.scale = Vector2.ONE * 0.0
+#	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
+#	tween.tween_callback(color_flower)
+	current_frame = 0
+	$FlowerSheet.set_region_rect(Rect2(128*current_frame,0,128,128))
+	$NextFrameTimer.set_wait_time(GROW_TIMER/max_frame)
+	$NextFrameTimer.start()
+
+func _on_next_frame_timer_timeout() -> void:
+	current_frame += 1
+	if current_frame == max_frame:
+		color_flower()
+	else:
+		$FlowerSheet.set_region_rect(Rect2(128*current_frame,0,128,128))
+		$NextFrameTimer.start()
 
 func color_flower():
 	var tween2 = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
@@ -56,4 +71,3 @@ func set_flower_backgrounds(id : int) -> void:
 		backgrounds[i].set_texture(texture)
 		backgrounds[i].material.set("shader_parameter/paint_color", GameData.FLOWER_COLORS[id][i])
 		i += 1
-		

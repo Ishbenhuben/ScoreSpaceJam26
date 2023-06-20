@@ -13,8 +13,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_grrll")
 
-[node name="ResultsPanel" parent="." instance=ExtResource("2_cmhug")]
-layout_mode = 1
-
 [node name="CollectedFlowerManager" parent="." instance=ExtResource("3_gwl7r")]
+layout_mode = 1
+mouse_filter = 2
+
+[node name="ResultsPanel" parent="." instance=ExtResource("2_cmhug")]
 layout_mode = 1

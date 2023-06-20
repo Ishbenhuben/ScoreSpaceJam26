@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://squ85gt4fbs1"]
+[gd_scene load_steps=8 format=3 uid="uid://squ85gt4fbs1"]
 
 [ext_resource type="Script" path="res://Scenes/Flower.gd" id="1_pc6ye"]
 [ext_resource type="Shader" path="res://Assets/ink.gdshader" id="2_8jma7"]
 [ext_resource type="Texture2D" uid="uid://b4h6bxj073bwa" path="res://Assets/Flowers/sakura_bg1.png" id="3_fln7y"]
 [ext_resource type="Texture2D" uid="uid://cli7bcv7v2ep8" path="res://Assets/Flowers/sakura.png" id="4_74ctv"]
+[ext_resource type="Texture2D" uid="uid://cwq8kllrixtdl" path="res://Assets/Flowers/sakura-sheet.png" id="5_rm3vp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kqm24"]
 resource_local_to_scene = true
@@ -38,8 +39,19 @@ texture = ExtResource("3_fln7y")
 material = SubResource("ShaderMaterial_fn3oa")
 
 [node name="FlowerSprite" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.152941, 0.137255, 0.12549, 1)
 texture = ExtResource("4_74ctv")
 
 [node name="GrowthTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="FlowerSheet" type="Sprite2D" parent="."]
+texture = ExtResource("5_rm3vp")
+region_enabled = true
+region_rect = Rect2(640, 0, 128, 128)
+
+[node name="NextFrameTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="NextFrameTimer" to="." method="_on_next_frame_timer_timeout"]

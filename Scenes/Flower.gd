@@ -9,6 +9,7 @@ var flower_id : int
 
 var current_frame = 0
 var max_frame = 10
+var flower_size = 128
 
 
 @onready var backgrounds = [$BG1, $BG2]
@@ -23,6 +24,7 @@ func set_flower_id(f_id:int) -> void:
 	flower_id = f_id
 	$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])
 	$FlowerSheet.set_texture(GameData.FLOWER_SHEETS[flower_id])
+	max_frame = $FlowerSheet.get_texture().get_width()/flower_size
 	set_flower_backgrounds(flower_id)
 	start_growth()
 
@@ -39,7 +41,7 @@ func start_growth() -> void:
 #	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
 #	tween.tween_callback(color_flower)
 	current_frame = 0
-	$FlowerSheet.set_region_rect(Rect2(128*current_frame,0,128,128))
+	$FlowerSheet.set_region_rect(Rect2(flower_size*current_frame,0,flower_size,flower_size))
 	$NextFrameTimer.set_wait_time(GROW_TIMER/max_frame)
 	$NextFrameTimer.start()
 
@@ -48,7 +50,7 @@ func _on_next_frame_timer_timeout() -> void:
 	if current_frame == max_frame:
 		color_flower()
 	else:
-		$FlowerSheet.set_region_rect(Rect2(128*current_frame,0,128,128))
+		$FlowerSheet.set_region_rect(Rect2(flower_size*current_frame,0,flower_size,flower_size))
 		$NextFrameTimer.start()
 
 func color_flower():

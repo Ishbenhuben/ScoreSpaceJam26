@@ -6,7 +6,7 @@ func xor(statement_1 : bool, statement_2 : bool) -> bool:
 
 func seconds_to_string(seconds:float) -> String:
 	var mins = floor(seconds/60)
-	return "%d:%.2f" % [mins, fmod(seconds, 60)]
+	return "%d:%2.2f" % [mins, fmod(seconds, 60)]
 
 func phantomize(label:Label, dest:Vector2, duration:float) -> void:
 	var new_phantom = label.duplicate()

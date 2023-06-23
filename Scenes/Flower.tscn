@@ -43,9 +43,6 @@ visible = false
 modulate = Color(0.152941, 0.137255, 0.12549, 1)
 texture = ExtResource("4_74ctv")
 
-[node name="GrowthTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="FlowerSheet" type="Sprite2D" parent="."]
 modulate = Color(0.152941, 0.137255, 0.12549, 1)
 texture = ExtResource("5_rm3vp")

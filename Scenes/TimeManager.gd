@@ -10,9 +10,7 @@ var total_time = 0
 
 var additional_time_displayed_duration = 1.5
 
-var combo_multiplier = 1.2
-
-
+var combo_multiplier = 1.05
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -57,7 +55,7 @@ func bouquet_made(combo_count:int) -> void:
 	add_time(additional_time * pow(combo_multiplier,combo_count-1))
 
 func add_time(addtnl_time:float) -> void:
-	print("added time: ", addtnl_time)
+	#print("added time: ", addtnl_time)
 	time_left += addtnl_time
 	total_time += addtnl_time
 	if time_left > max_time:

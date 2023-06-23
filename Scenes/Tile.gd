@@ -36,6 +36,8 @@ func toggle_shiver(will_shiver:bool) -> void:
 func _process(delta):
 	if shiver:
 		set_rotation_degrees(randf()*4-2)
+	else:
+		set_rotation_degrees(0)
 
 func _on_area_gui_input(event):
 	if event is InputEventMouseButton:

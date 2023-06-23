@@ -144,15 +144,15 @@ alignment = 1
 max_length = 10
 caret_blink = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ResultsVbox"]
+[node name="Submission" type="HBoxContainer" parent="ResultsVbox"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="ResultsVbox/HBoxContainer"]
+[node name="Control" type="Control" parent="ResultsVbox/Submission"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="Submit" type="Button" parent="ResultsVbox/HBoxContainer"]
+[node name="Submit" type="Button" parent="ResultsVbox/Submission"]
 custom_minimum_size = Vector2(512, 128)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -164,10 +164,20 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_rw3qe")
 disabled = true
 text = "Submit Score"
 
-[node name="Control2" type="Control" parent="ResultsVbox/HBoxContainer"]
+[node name="Control2" type="Control" parent="ResultsVbox/Submission"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
+
+[node name="Submitted" type="Label" parent="ResultsVbox"]
+visible = false
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme = ExtResource("1_js6v7")
+theme_override_font_sizes/font_size = 64
+text = "Score Submitted!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Space3" type="Control" parent="ResultsVbox"]
 custom_minimum_size = Vector2(0, 300)
@@ -196,7 +206,7 @@ mouse_filter = 1
 texture_normal = ExtResource("5_gr6hv")
 
 [connection signal="text_changed" from="ResultsVbox/PlayerName" to="." method="_on_player_name_text_changed"]
-[connection signal="pressed" from="ResultsVbox/HBoxContainer/Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="ResultsVbox/Submission/Submit" to="." method="_on_submit_pressed"]
 [connection signal="pressed" from="ResultsVbox/Buttons/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="ResultsVbox/Buttons/LeaderBoardsButton" to="." method="_on_leader_boards_button_pressed"]
 [connection signal="pressed" from="ResultsVbox/Buttons/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

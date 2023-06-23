@@ -8,6 +8,9 @@ var data
 func _ready():
 	Leaderboard.leaderboard_updated.connect(update_leaderboard)
 	Leaderboard.personal_score_updated.connect(update_personal)
+	Leaderboard._get_leaderboards()
+	update_personal({"rank" : Leaderboard.current_rank, "score": Leaderboard.current_high_score})
+
 
 func _on_back_to_menu_pressed():
 	get_tree().change_scene_to_file("res://Screens/MainMenuScreen.tscn")

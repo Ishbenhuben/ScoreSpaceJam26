@@ -2,12 +2,15 @@ extends MarginContainer
 
 
 @onready var player_name = $ResultsVbox/PlayerName
-@onready var submit_btn = $ResultsVbox/HBoxContainer/Submit
+@onready var submit_btn = $ResultsVbox/Submission/Submit
 
 @onready var score_label = $ResultsVbox/ScoreValue
 @onready var bouquets_label = $ResultsVbox/Bouquets/Bouquets_value
 @onready var max_combo_label = $ResultsVbox/Max_Combo/max_combo_value
 @onready var time_played_label = $ResultsVbox/Time_Played/Time_Played_value
+
+@onready var submit_container = $ResultsVbox/Submission
+@onready var submitted_label = $ResultsVbox/Submitted
 
 var results = {}
 var labels_dict = {}
@@ -20,10 +23,19 @@ func _ready():
 					"max_combo" : max_combo_label,
 					"time_played" : time_played_label,}
 	Events.connect("add_new_result", add_new_results)
+	submit_container.show()
+	submitted_label.hide()
+	
 
 func _on_submit_pressed():
 	Leaderboard._upload_score($ResultsVbox/ScoreValue.text)
 	Leaderboard._change_player_name(player_name.text)
+	Leaderboard._get_player_name()
+	submit_container.hide()
+	submitted_label.show()
+
+
+
 
 
 func _on_player_name_text_changed(new_text):

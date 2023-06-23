@@ -14,6 +14,8 @@ var current_frame = 0
 var max_frame = 10
 var flower_size = 128
 
+var color_tween = null
+
 @onready var backgrounds = [$BG1, $BG2]
 
 func _ready():
@@ -33,6 +35,7 @@ func set_flower_id(f_id:int) -> void:
 func cut_flower(next_flower_id:int) -> void:
 	if current_frame == max_frame:
 		Events.emit_signal("flower_cut", flower_id)
+		color_tween.kill()
 		set_shader_circle_size(0.0)
 		set_flower_id(next_flower_id)
 
@@ -63,8 +66,8 @@ func _on_next_frame_timer_timeout() -> void:
 		$NextFrameTimer.start()
 
 func color_flower():
-	var tween2 = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-	tween2.tween_method(set_shader_circle_size, 0.0, 0.5, 0.1)
+	color_tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	color_tween.tween_method(set_shader_circle_size, 0.0, 0.5, 0.1)
 
 func set_shader_circle_size(value: float):
 	set_bg_shaders_param("circle_size", value)

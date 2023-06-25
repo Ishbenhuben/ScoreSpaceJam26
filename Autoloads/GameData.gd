@@ -4,7 +4,7 @@ const FLOWER_TEXTURES = [preload("res://Assets/Flowers/lotus.png"),
 						preload("res://Assets/Flowers/sakura.png"),
 						preload("res://Assets/Flowers/bigflower.png"),]
 						
-const FLOWER_SHEETS = [preload("res://Assets/Flowers/lotus-sheet.png"),
+const FLOWER_SHEETS = [preload("res://Assets/Flowers/lotus_sheet30.png"),
 						preload("res://Assets/Flowers/sakura_sheet30.png"),
 						preload("res://Assets/Flowers/bigflower_sheet30.png"),]
 						

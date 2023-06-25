@@ -5,14 +5,18 @@ const MAX_SCALE = Vector2.ONE
 
 const GROWTH_TIME_MULTIPLIER = 0.985
 
+const FLOWER_SIZE = 128
+
 var current_combo = 0
 var current_growth = 0
 
 var flower_id : int
 
+var is_fully_grown = false
 var current_frame = 0
 var max_frame = 10
-var flower_size = 128
+
+var drawing_animation = true
 
 var color_tween = null
 
@@ -26,14 +30,21 @@ func _ready():
 	
 func set_flower_id(f_id:int) -> void:
 	flower_id = f_id
-	$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])
-	$FlowerSheet.set_texture(GameData.FLOWER_SHEETS[flower_id])
-	max_frame = $FlowerSheet.get_texture().get_width()/flower_size
+	if PlayerData.wants_animation:
+		$FlowerSheet.set_texture(GameData.FLOWER_SHEETS[flower_id])
+		$FlowerSheet.show()
+		$FlowerSprite.hide()
+	else:
+		$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])
+		$FlowerSprite.show()
+		$FlowerSheet.hide()
+	
+	max_frame = $FlowerSheet.get_texture().get_width()/FLOWER_SIZE
 	set_flower_backgrounds(flower_id)
 	start_growth()
 
 func cut_flower(next_flower_id:int) -> void:
-	if current_frame == max_frame:
+	if is_fully_grown:
 		Events.emit_signal("flower_cut", flower_id)
 		color_tween.kill()
 		set_shader_circle_size(0.0)
@@ -44,30 +55,44 @@ func get_time_to_next_frame() -> float:
 
 func set_combo(combo:int) -> void:
 	current_combo = combo
-	#print(get_time_to_next_frame())
-	$NextFrameTimer.set_wait_time(get_time_to_next_frame())
+	if PlayerData.wants_animation:
+		$Timer.set_wait_time(get_time_to_next_frame())
 
 func start_growth() -> void:
-#	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-#	$FlowerSprite.scale = Vector2.ONE * 0.0
-#	tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
-#	tween.tween_callback(color_flower)
-	current_frame = 0
-	$FlowerSheet.set_region_rect(Rect2(flower_size*current_frame,0,flower_size,flower_size))
-	$NextFrameTimer.set_wait_time(get_time_to_next_frame())
-	$NextFrameTimer.start()
+	is_fully_grown = false
+	if PlayerData.wants_animation:
+		current_frame = 0
+		$FlowerSheet.set_region_rect(Rect2(FLOWER_SIZE*current_frame,0,FLOWER_SIZE,FLOWER_SIZE))
+		$Timer.set_wait_time(get_time_to_next_frame())
+		
+	else:
+		var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+		$FlowerSprite.scale = Vector2.ONE * 0.0
+		tween.tween_property($FlowerSprite, "scale", Vector2.ONE * MAX_SCALE, GROW_TIMER)
+		$Timer.set_wait_time(GROW_TIMER)
+		#TODO depende sa speed yung delta
+		
+	$Timer.start()
 
 func _on_next_frame_timer_timeout() -> void:
-	current_frame += 1
-	if current_frame == max_frame:
-		color_flower()
+	if PlayerData.wants_animation:
+		current_frame += 1
+		if current_frame == max_frame:
+			set_fully_grown()
+			color_flower()
+		else:
+			$FlowerSheet.set_region_rect(Rect2(FLOWER_SIZE*current_frame,0,FLOWER_SIZE,FLOWER_SIZE))
+			$Timer.start()
 	else:
-		$FlowerSheet.set_region_rect(Rect2(flower_size*current_frame,0,flower_size,flower_size))
-		$NextFrameTimer.start()
+		set_fully_grown()
+		color_flower()
 
-func color_flower():
+func color_flower() -> void:
 	color_tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	color_tween.tween_method(set_shader_circle_size, 0.0, 0.5, 0.1)
+
+func set_fully_grown() -> void:
+	is_fully_grown = true
 
 func set_shader_circle_size(value: float):
 	set_bg_shaders_param("circle_size", value)

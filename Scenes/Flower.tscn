@@ -44,12 +44,13 @@ modulate = Color(0.152941, 0.137255, 0.12549, 1)
 texture = ExtResource("4_74ctv")
 
 [node name="FlowerSheet" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.152941, 0.137255, 0.12549, 1)
 texture = ExtResource("5_rm3vp")
 region_enabled = true
 region_rect = Rect2(640, 0, 128, 128)
 
-[node name="NextFrameTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="NextFrameTimer" to="." method="_on_next_frame_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_next_frame_timer_timeout"]

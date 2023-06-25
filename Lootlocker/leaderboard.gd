@@ -15,7 +15,11 @@ var submit_score_http = HTTPRequest.new()
 var set_name_http = HTTPRequest.new()
 var get_name_http = HTTPRequest.new()
 
-var player_name = ""
+
+var player_id := 0
+var player_name := ""
+var current_high_score := 0
+var current_rank := 0
 
 signal leaderboard_updated(new_board)
 signal personal_score_updated(new_score)
@@ -39,7 +43,7 @@ func _authentication_request():
 	var data = { "game_key": game_API_key, "game_version": "0.0.0.1", "development_mode": true }
 	
 	# If a player session already exists, send with the player identifier
-	if(player_session_exists == true and false):
+	if(player_session_exists == true):
 		data = { "game_key": game_API_key, "player_identifier":player_identifier, "game_version": "0.0.0.1", "development_mode": true }
 	
 	# Add 'Content-Type' header:
@@ -57,6 +61,8 @@ func _authentication_request():
 
 func _on_authentication_request_completed(result, response_code, headers, body):
 	var res = JSON.parse_string(body.get_string_from_utf8())
+	
+	print(res)
 	# Save player_identifier to file
 	var file = FileAccess.open("res://Lootlocker/LootLocker.data", FileAccess.WRITE)
 	file.store_string(res.player_identifier)
@@ -64,6 +70,8 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	
 	# Save session_token to memory
 	session_token = res.session_token
+	
+	player_id = res.player_id
 	
 	
 	# Clear node
@@ -106,7 +114,10 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 			continue
 	
 	for item in res.items:
+		print(item)
 		if item.player.name == player_name:
+			current_high_score = item.score
+			current_rank = item.rank
 			personal_score_updated.emit({"score":item.score, "rank": item.rank})
 			continue
 
@@ -129,6 +140,7 @@ func _upload_score(score):
 func _on_upload_score_request_completed(result, response_code, headers, body) :
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	
+	print("score uploaded")
 	# Clear node
 	submit_score_http.queue_free()
 
@@ -157,8 +169,10 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 func _get_player_name():
 	
 	var url = "https://api.lootlocker.io/game/player/name"
+	#var url = "https://api.lootlocker.io/admin/v1/game/{game_id}/players?query=" + player_id
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
+
 	# Create a request node for getting the highscore
 	get_name_http = HTTPRequest.new()
 	add_child(get_name_http)
@@ -169,5 +183,5 @@ func _get_player_name():
 	
 func _on_player_get_name_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
-
+	print(json)
 	player_name = json.name

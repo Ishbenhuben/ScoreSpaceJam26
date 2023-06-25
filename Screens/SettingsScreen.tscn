@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3rbookwitqga"]
+[gd_scene load_steps=6 format=3 uid="uid://b3rbookwitqga"]
 
 [ext_resource type="Theme" uid="uid://ciryy6f7j45yu" path="res://Assets/font_theme.tres" id="1_q5snk"]
 [ext_resource type="Script" path="res://Screens/SettingsScreen.gd" id="1_v4vt4"]
+[ext_resource type="PackedScene" uid="uid://squ85gt4fbs1" path="res://Scenes/Flower.tscn" id="3_l24ho"]
 [ext_resource type="FontFile" uid="uid://bolakracl0ohg" path="res://Assets/OtsutomeFont_Ver3.ttf" id="4_6802u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pf60"]
@@ -90,6 +91,39 @@ min_value = -30.0
 max_value = 30.0
 tick_count = 1
 
+[node name="Space3" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Drawing" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Drawing_Label" type="Label" parent="MarginContainer/VBoxContainer/Drawing"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 100
+text = "FLOWER
+ANIMATION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlowerContainer" type="TextureButton" parent="MarginContainer/VBoxContainer/Drawing"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+toggle_mode = true
+
+[node name="Flower" parent="MarginContainer/VBoxContainer/Drawing/FlowerContainer" instance=ExtResource("3_l24ho")]
+position = Vector2(96, 101)
+
+[node name="Flower2" parent="MarginContainer/VBoxContainer/Drawing/FlowerContainer" instance=ExtResource("3_l24ho")]
+position = Vector2(210, 101)
+
+[node name="Flower3" parent="MarginContainer/VBoxContainer/Drawing/FlowerContainer" instance=ExtResource("3_l24ho")]
+position = Vector2(326, 101)
+
 [node name="BackToMenu" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -111,4 +145,5 @@ text = "Back To Menu"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/Music_Slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Sound/Sound_Slider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Drawing/FlowerContainer" to="." method="_on_flower_container_toggled"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

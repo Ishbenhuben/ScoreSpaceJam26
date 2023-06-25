@@ -28,39 +28,40 @@ func _ready():
 	set_bg_shaders_param("rand", Vector3(randf_range(0,1000), randf_range(0,1000), randf_range(0,50000)))
 	Events.connect("bouquet_made", set_combo)
 	
-func set_flower_id(f_id:int) -> void:
+func set_flower_id(f_id:int, will_draw:bool) -> void:
 	flower_id = f_id
-	if PlayerData.wants_animation:
+	drawing_animation = will_draw
+	if drawing_animation:
 		$FlowerSheet.set_texture(GameData.FLOWER_SHEETS[flower_id])
 		$FlowerSheet.show()
 		$FlowerSprite.hide()
+		max_frame = $FlowerSheet.get_texture().get_width()/FLOWER_SIZE
 	else:
 		$FlowerSprite.set_texture(GameData.FLOWER_TEXTURES[flower_id])
 		$FlowerSprite.show()
 		$FlowerSheet.hide()
-	
-	max_frame = $FlowerSheet.get_texture().get_width()/FLOWER_SIZE
+		
 	set_flower_backgrounds(flower_id)
 	start_growth()
 
 func cut_flower(next_flower_id:int) -> void:
 	if is_fully_grown:
 		Events.emit_signal("flower_cut", flower_id)
-		color_tween.kill()
-		set_shader_circle_size(0.0)
-		set_flower_id(next_flower_id)
+		clear_color()
+		set_flower_id(next_flower_id, drawing_animation)
 
 func get_time_to_next_frame() -> float:
 	return GROW_TIMER * pow(GROWTH_TIME_MULTIPLIER,current_combo)/max_frame
 
 func set_combo(combo:int) -> void:
 	current_combo = combo
-	if PlayerData.wants_animation:
+	if drawing_animation:
 		$Timer.set_wait_time(get_time_to_next_frame())
 
 func start_growth() -> void:
+	clear_color()
 	is_fully_grown = false
-	if PlayerData.wants_animation:
+	if drawing_animation:
 		current_frame = 0
 		$FlowerSheet.set_region_rect(Rect2(FLOWER_SIZE*current_frame,0,FLOWER_SIZE,FLOWER_SIZE))
 		$Timer.set_wait_time(get_time_to_next_frame())
@@ -75,7 +76,7 @@ func start_growth() -> void:
 	$Timer.start()
 
 func _on_next_frame_timer_timeout() -> void:
-	if PlayerData.wants_animation:
+	if drawing_animation:
 		current_frame += 1
 		if current_frame == max_frame:
 			set_fully_grown()
@@ -87,6 +88,11 @@ func _on_next_frame_timer_timeout() -> void:
 		set_fully_grown()
 		color_flower()
 
+func clear_color() -> void:
+	if color_tween:
+		color_tween.kill()
+	set_shader_circle_size(0.0)
+	
 func color_flower() -> void:
 	color_tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	color_tween.tween_method(set_shader_circle_size, 0.0, 0.5, 0.1)

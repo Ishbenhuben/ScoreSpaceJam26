@@ -13,7 +13,7 @@ func _ready():
 func init(xy:Vector2, _vp:Rect2, flower_id:int) -> void:
 	tile_coord = xy
 	set_position(tile_coord * TILE_SIZE)
-	$Flower.set_flower_id(flower_id)
+	$Flower.set_flower_id(flower_id, PlayerData.drawing_animation)
 
 func _on_tile_area_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

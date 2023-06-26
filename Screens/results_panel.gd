@@ -34,10 +34,6 @@ func _on_submit_pressed():
 	submit_container.hide()
 	submitted_label.show()
 
-
-
-
-
 func _on_player_name_text_changed(new_text):
 	submit_btn.disabled = (len(new_text) <= 0)
 

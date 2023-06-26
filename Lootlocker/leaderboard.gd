@@ -122,10 +122,6 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 			continue
 
 	leaderboard_updated.emit(data)
-	
-	
-	
-
 
 func _upload_score(score):
 	var data = { "score": str(score) }

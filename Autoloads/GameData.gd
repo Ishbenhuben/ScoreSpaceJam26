@@ -14,4 +14,4 @@ const BG_FLOWER_TEXTURES = [[preload("res://Assets/Flowers/lotus_bg1.png"), prel
 						
 const FLOWER_COLORS = [[Color.HOT_PINK, Color.GREEN], [Color.DODGER_BLUE], [Color.YELLOW, Color.RED]]
 
-
+const FLOWER_SIZE = 128

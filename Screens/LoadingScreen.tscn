@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxfne8k4wxgkk"]
+
+[ext_resource type="Script" path="res://Screens/LoadingScreen.gd" id="1_4fsce"]
+[ext_resource type="Script" path="res://Screens/FlowerManager.gd" id="2_t12ma"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_4fsce")
+
+[node name="FlowerManager" type="Node2D" parent="."]
+script = ExtResource("2_t12ma")

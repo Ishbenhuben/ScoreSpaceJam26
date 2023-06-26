@@ -5,7 +5,7 @@ const MAX_SCALE = Vector2.ONE
 
 const GROWTH_TIME_MULTIPLIER = 0.985
 
-const FLOWER_SIZE = 128
+const FLOWER_SIZE = GameData.FLOWER_SIZE
 
 var current_combo = 0
 var current_growth = 0

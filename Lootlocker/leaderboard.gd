@@ -100,9 +100,16 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	
 	
 	# Clear node
-	leaderboard_http.queue_free()
+	if leaderboard_http:
+		leaderboard_http.queue_free()
 	
 	var data = []
+	
+	if not "items" in res:
+		await get_tree().create_timer(3).timeout
+		_get_leaderboards()
+		return
+	
 	for item in res.items:
 		var entry = {}
 		entry.rank = item.rank

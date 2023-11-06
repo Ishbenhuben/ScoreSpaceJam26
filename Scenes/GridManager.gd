@@ -58,6 +58,8 @@ func try_moving() -> void:
 			ninja_position = tile.tile_coord
 			Events.ninja_moved_to.emit(tile.global_position)
 			break
+		else:
+			highlight_valid_tiles()
 
 func reset_flower_deck() -> void:
 	var dupes = 4
@@ -84,6 +86,12 @@ func cut_flowers_from_to(from:Vector2, to:Vector2) -> void:
 		while from != to:
 			from.x += delta
 			cut_flower_on_tile(from)
+
+func highlight_valid_tiles():
+	for r in range(GRID_SIZE):
+		grid[ninja_position.x][r].highlight_tile()
+	for c in range(GRID_SIZE):
+		grid[c][ninja_position.y].highlight_tile()
 
 func cut_flower_on_tile(tile_pos:Vector2) -> void:
 	grid[tile_pos.x][tile_pos.y].cut_flower(draw_flower_deck())

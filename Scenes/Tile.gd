@@ -6,6 +6,10 @@ var tile_coord : Vector2
 
 var shiver = false
 
+var highlight_tween = null
+const HIGHLIGHT_MIN_SIZE = 0.89
+const HIGHLIGHT_TIME = 0.25
+
 func _ready():
 	Events.connect("round_ended", disable_tile)
 	Events.connect("shiver", toggle_shiver)
@@ -29,6 +33,14 @@ func disable_tile() -> void:
 
 func cut_flower(next_flower_id:int) -> void:
 	$Flower.cut_flower(next_flower_id)
+
+func highlight_tile():
+	if highlight_tween and highlight_tween.is_running():
+		return
+	highlight_tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+	$Highlight.scale = Vector2.ONE
+	highlight_tween.tween_property($Highlight, "scale", Vector2.ONE * HIGHLIGHT_MIN_SIZE, HIGHLIGHT_TIME/2)
+	highlight_tween.tween_property($Highlight, "scale", Vector2.ONE, HIGHLIGHT_TIME/2)
 
 func toggle_shiver(will_shiver:bool) -> void:
 	shiver = will_shiver
